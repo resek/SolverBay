@@ -1,0 +1,23 @@
+{
+  "name": "ideacrowd",
+  "version": "1.0.0",
+  "description": "Crowdsourcing platform",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/resek/ideaCrowd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/resek/ideaCrowd/issues"
+  },
+  "homepage": "https://github.com/resek/ideaCrowd#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2"
+  }
+}
