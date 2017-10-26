@@ -17,7 +17,13 @@ app.get('/', function (req, res) {
 
 //challenges index
 app.get("/challenges", function (req, res) {
-  res.render("challenges/index");
+  Challenge.find({}, function(err, challenges) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.render("challenges/index", {challenges: challenges});
+    }
+  });  
 });
 
 //challenges new
@@ -25,14 +31,13 @@ app.get("/challenges/new", function(req, res) {
   res.render("challenges/new");
 });
 
-//create route
+//create/post route
 app.post("/challenges", function(req, res) {
   Challenge.create(req.body, function(err, newChallenge) {
     if(err) {
       console.log(err);
     } else {
-      console.log(req.body);
-      res.redirect ("/");
+      res.redirect ("/challenges");
     }
   });
 });

@@ -8,11 +8,19 @@
     <form id="newForm" action="/challenges" method="POST">
         <div>
             <label for="challengeTitle">Challenge title</label>
-            <input type="text" name="title" placeholder="Type challenge title..." id="challengeTitle"></input>
+            <input type="text" name="title" placeholder="Type challenge title..." id="challengeTitle" required></input>
         </div>
         <div>
             <label for="challengeDescription">Description</label>
-            <textarea rows="10" name="description" placeholder="Tell your story..." id="challengeDescription"></textarea>
+            <textarea rows="10" name="description" placeholder="Tell your story..." id="challengeDescription" required></textarea>
+        </div>
+        <div>
+            <label for="challengePrize">Choose you prize in €</label>
+            <input type="number" name="prize" id="challengePrize" min="10" value="10" required></input>
+        </div>
+        <div>
+            <label for="challengeDate">Select end date</label>
+            <input type="date" name="date" id="challengeDate" required></input>
         </div>
         <div>
             <input type="submit" class="btn btnFull"></input>
