@@ -9,7 +9,7 @@ var Challenge = require ("./models/challenge");
 app.use(express.static('public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.connect("mongodb://localhost/idea_crowd");
+mongoose.connect("mongodb://donsan:burek1234@ds133465.mlab.com:33465/idea_crowd");
 
 //homepage
 app.get('/', function (req, res) {
