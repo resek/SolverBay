@@ -8,9 +8,10 @@
     <% challenges.forEach(function(challenge) { %>
         <div class="indexChallenges">
             <h3><%= challenge.title %></h3>
-            <p><%= challenge.description %></p>
+            <p><%= challenge.description.substring(0, 180) %>...</p>
             <p>Prize <%= challenge.prize %> €</p>
             <p><%= challenge.date %></p>
+            <a class="btn btnFull" href="/challenges/<%= challenge._id %>"></a>
         </div>
     <% }); %>
 </div>

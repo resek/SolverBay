@@ -1,3 +1,4 @@
+// https!?
 var express      = require('express');
 var bodyParser   = require('body-parser');
 var mongoose     = require('mongoose');
@@ -15,7 +16,7 @@ app.get('/', function (req, res) {
   res.render("homepage");
 });
 
-//challenges index
+//challenges - index
 app.get("/challenges", function (req, res) {
   Challenge.find({}, function(err, challenges) {
     if(err) {
@@ -26,18 +27,31 @@ app.get("/challenges", function (req, res) {
   });  
 });
 
-//challenges new
+//challenges - new
 app.get("/challenges/new", function(req, res) {
   res.render("challenges/new");
 });
 
-//create/post route
+//challenges - create
 app.post("/challenges", function(req, res) {
   Challenge.create(req.body, function(err, newChallenge) {
     if(err) {
       console.log(err);
     } else {
       res.redirect ("/challenges");
+    }
+  });
+});
+
+//challenges - show
+app.get("/challenges/:id", function (req, res) {
+  var id = req.params.id;
+  console.log(req);
+  Challenge.findById(id, function(err, foundChallenge) {
+    if(err) {
+      console.log(err)
+    } else {
+      res.render("challenges/show", {foundChallenge: foundChallenge});
     }
   });
 });

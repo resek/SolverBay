@@ -57,9 +57,21 @@ hr {
 	border-top: 1px solid #8c8b8b;
 }
 
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+}
+
 .rowCSS {
     max-width: 1140px;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .btn:link, .btn:visited, input[type=submit] { 
@@ -94,7 +106,7 @@ hr {
 /* HOMEPAGE HEADER */
 /* ---------------------- */
 
-header {
+.homeHeader {
     background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/headerImage.jpg);
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/headerImage.jpg);
     height: 100vh;
@@ -103,13 +115,8 @@ header {
     background-attachment: fixed;
 }
 
-header .btn {
+.homeHeader .btn {
     margin-bottom: 10px;
-}
-
-.navbar {
-    width: 1140px;
-    margin: auto;
 }
 
 .logoWhite { 
@@ -128,8 +135,33 @@ header .btn {
     transform: translate(-50%, -50%);
 }
 
+.homeNavbar {
+    float: right;
+    margin-top: 50px;
+    font-weight: 300;
+    font-size: 90%;     
+}
+
+.homeNavbar li {
+    margin-left: 22px;
+}
+
+.homeNavbar a:link, .homeNavbar a:visited {
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: solid 2px transparent;
+    -webkit-transition: border-bottom 0.3s;
+    transition: border-bottom 0.3s;
+    padding-bottom: 7px;   
+}
+
+.homeNavbar a:hover, .homeNavbar a:active  {
+    border-bottom: solid 2px #3498db;
+}
+
 @media only screen and (max-width: 1200px) {
     .logoWhite { margin: 25px;}
+    .homeNavbar { margin-right: 25px;}
 }
 
 @media only screen and (max-width: 991px) {
@@ -196,6 +228,49 @@ header .btn {
 .howItWorks > div {
     width: 250px;
     margin: 60px auto;
+}
+
+/* ----------------- */
+/*        HEADER      */
+/* ----------------- */
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.98);
+    width: 100%;
+    box-shadow: 0 3px 3px #efefef;
+    z-index: 9999;
+    height: 70px;
+    margin-bottom: 30px;
+}
+
+.navbarLinks {
+    float: right;
+    margin-top: 25px;
+    margin-right: 25px;
+    font-size: 90%;
+}
+
+.navbarLinks li {
+    margin-right: 25px;
+}
+
+.navbarLinks a:link, .navbarLinks a:visited {
+    color: #606060;
+    text-transform: uppercase;
+    border-bottom: solid 2px transparent;
+    -webkit-transition: border-bottom 0.3s;
+    transition: border-bottom 0.3s;
+    padding-bottom: 22px;   
+}
+
+.navbarLinks a:hover, .navbarLinks a:active  {
+    border-bottom: solid 2px #3498db;
+}
+
+.logoBlack {
+    margin-left: 25px;
+    height: 50px;
+    margin-top: 10px;
 }
 
 /* ---------------------- */
