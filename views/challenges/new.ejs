@@ -4,7 +4,7 @@
     <form id="newForm" action="/challenges" method="POST">
         <div>
             <label for="challengeTitle">Challenge title</label>
-            <input type="text" name="title" placeholder="Type challenge title..." id="challengeTitle" required></input>
+            <input type="text" name="title" placeholder="Type challenge title..." id="challengeTitle" maxlength="38"> required></input>
         </div>
         <div>
             <label for="challengeDescription">Description</label>
@@ -15,7 +15,7 @@
             <input type="number" name="prize" id="challengePrize" min="10" value="10" required></input>
         </div>
         <div>
-            <label for="challengeDate">Select end date</label>
+            <label for="challengeDate">Select an end date</label>
             <input type="date" name="date" id="challengeDate" required></input>
         </div>
         <div>

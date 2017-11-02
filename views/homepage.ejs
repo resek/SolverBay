@@ -48,61 +48,21 @@
 
         <div class="container">           
             <div class="row">
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="challengesBox">
-                        <h3>How can we solve this problem?</h3>
-                        <hr>
-                        <div>
-                            <p>Obstajajo številne različice Lorem Ipsuma, vendar...</p>
-                            <p><b>PRIZE: 50€</b></p>
-                            <p><b>27 hours left</b></p>
-                        </div>                        
-                        <hr>
-                        <a class="btn btnFull" href="#">Solve it</a>
+                <% for(var i = 0; i < 4; i++) { %>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="challengesBox">
+                            <h3><%= challenges[i].title %></h3>
+                            <hr>
+                            <div>
+                                <p><%= challenges[i].description.substring(0, 48) %>...</p>
+                                <p><b>PRIZE: <%= challenges[i].prize %>€</b></p>
+                                <p><b>END DATE: <%= challenges[i].date %></b></p>
+                            </div>                        
+                            <hr>
+                            <a class="btn btnFull" href="/challenges/<%= challenges[i]._id %>">Solve it</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="challengesBox">
-                        <h3>How can we solve this problem?</h3>
-                        <hr>
-                        <div>
-                            <p>Obstajajo številne različice Lorem Ipsuma, vendar...</p>
-                            <p><b>PRIZE: 50€</b></p>
-                            <p><b>27 hours left</b></p>
-                        </div>                        
-                        <hr>
-                        <a class="btn btnFull" href="#">Solve it</a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="challengesBox">
-                        <h3>How can we solve this problem?</h3>
-                        <hr>
-                        <div>
-                            <p>Obstajajo številne različice Lorem Ipsuma, vendar...</p>
-                            <p><b>PRIZE: 50€</b></p>
-                            <p><b>27 hours left</b></p>
-                        </div>                        
-                        <hr>
-                        <a class="btn btnFull" href="#">Solve it</a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="challengesBox">
-                        <h3>How can we solve this problem?</h3>
-                        <hr>
-                        <div>
-                            <p>Obstajajo številne različice Lorem Ipsuma, vendar...</p>
-                            <p><b>PRIZE: 50€</b></p>
-                            <p><b>27 hours left</b></p>
-                        </div>                        
-                        <hr>
-                        <a class="btn btnFull" href="#">Solve it</a>
-                    </div>
-                </div>                
+                <% }; %>                                
             </div>
         </div>        
     </section>

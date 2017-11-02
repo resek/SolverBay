@@ -2,6 +2,7 @@
 var express      = require('express');
 var bodyParser   = require('body-parser');
 var mongoose     = require('mongoose');
+var seedDB       = require("./seeds");
 var app          = express();
 
 var Challenge = require ("./models/challenge");
@@ -9,11 +10,19 @@ var Challenge = require ("./models/challenge");
 app.use(express.static('public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.connect("mongodb://donsan:burek1234@ds133465.mlab.com:33465/idea_crowd");
+mongoose.connect("mongodb://localhost/idea_crowd");
+
+seedDB();
 
 //homepage
 app.get('/', function (req, res) {
-  res.render("homepage");
+  Challenge.find({}).sort("date").exec(function(err, challenges) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.render("homepage", {challenges: challenges});
+    }
+  });
 });
 
 //challenges - index
@@ -57,6 +66,6 @@ app.get("/challenges/:id", function (req, res) {
 });
 
 //server
-app.listen (process.env.PORT, process.env.IP, function() {
-  console.log ("BlogApp has started!");
+app.listen(3000, function () {
+  console.log('App has started!')
 });
