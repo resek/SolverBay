@@ -95,11 +95,11 @@ li {
     background-color: #3498db;
     color: #fff;
     margin-right: 15px;
-    border: 1px solid #3498db;
+    border: 2px solid #3498db;
 }
 
 .btnGhost:link, .btnGhost:visited {
-    border: 1px solid #3498db;
+    border: 2px solid #3498db;
     color: white;
 }
 
@@ -208,7 +208,7 @@ li {
 
 .challengesBox a {
     margin-top: 30px;
-    font-size: 90%;
+    font-size: 85%;
 }
 
 .challengesBox div {
@@ -228,6 +228,20 @@ li {
     font-weight: 700;
     font-size: 130%;
 }
+
+.allChallengesBtn {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.allChallengesBtn .btnGhost:link, .allChallengesBtn .btnGhost:visited  {
+    color: #606060;
+}
+
+.allChallengesBtn .btnGhost:hover, .allChallengesBtn .btnGhost:active {
+    color: #fff;
+}
+
 
 /* -------------------------- */
 /* HOMEPAGE SECTION HOW IT WORKS */
