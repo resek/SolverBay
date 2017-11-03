@@ -55,7 +55,6 @@ app.post("/challenges", function(req, res) {
 //challenges - show
 app.get("/challenges/:id", function (req, res) {
   var id = req.params.id;
-  console.log(req);
   Challenge.findById(id, function(err, foundChallenge) {
     if(err) {
       console.log(err)

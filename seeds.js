@@ -3,26 +3,26 @@ var Challenge = require ("./models/challenge");
 
 var testChallenges = [
     {
-        title: "Kako naredti mesni burek?",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        title: "Decrease air inlet when domestic refrigerator door is opened",
+        description: "When we open the refrigerator door the cold air flows out and is replaced by the warm and moist one. This presents a problem for the cooling system. We are looking for ideas how to reduce it.",
         prize: 20,
         date: '2017-12-25'
     },
     {
-        title: "Kako naredti mesni burek?",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        title: "Decrease air inlet when domestic refrigerator door is opened",
+        description: "When we open the refrigerator door the cold air flows out and is replaced by the warm and moist one. This presents a problem for the cooling system. We are looking for ideas how to reduce it.",
         prize: 20,
         date: '2017-11-12'
     },
     {
-        title: "Kako naredti mesni burek?",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        title: "Decrease air inlet when domestic refrigerator door is opened",
+        description: "When we open the refrigerator door the cold air flows out and is replaced by the warm and moist one. This presents a problem for the cooling system. We are looking for ideas how to reduce it.",
         prize: 20,
         date: '2017-11-30'
     },
     {
-        title: "Kako naredti mesni burek?",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        title: "Decrease air inlet when domestic refrigerator door is opened",
+        description: "When we open the refrigerator door the cold air flows out and is replaced by the warm and moist one. This presents a problem for the cooling system. We are looking for ideas how to reduce it.",
         prize: 30,
         date: '2017-12-03'
     },  

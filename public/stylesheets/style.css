@@ -1,4 +1,11 @@
-/* #3498db - base color */
+/* ALL COLORS 
+base blue color - #3498db 
+dark blue color - #196090
+gray font base color - #606060
+gray light font color - #
+gray background color - #efefef
+gray shadow color   -   #aeaeaf
+*/
 
 /* ---------------------- */
 /* BASIC SETUP */
@@ -54,7 +61,7 @@ section {
 }
 
 hr {
-	border-top: 1px solid #8c8b8b;
+	border-top: 1px solid #aeaeaf;
 }
 
 a {
@@ -192,24 +199,34 @@ li {
 }
 
 .challengesBox h3 {
-    margin-bottom: 20px;
-    margin-top: 10px;
-    text-align: left;
-    font-size: 100%;
+    font-size: 90%;
+    height: 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .challengesBox a {
-    margin-top: 25px;
+    margin-top: 30px;
+    font-size: 90%;
 }
 
 .challengesBox div {
+    color: #82868c;
     text-align: left;
-    font-size: 75%;
-    margin: 15px 0;
+    font-size: 80%;
+    margin-top: 18px;
+    height: 70px;
 }
 
 .challengesBox div p {
     margin: 10px 0;
+}
+
+.challengesBox div p span {
+    color: #606060;
+    font-weight: 700;
+    font-size: 130%;
 }
 
 /* -------------------------- */
