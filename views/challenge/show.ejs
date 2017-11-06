@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+
+<div class="rowCSS showChallenges">
+    <h3><%= foundChallenge.title %></h3>
+    <p class="showPrize">PRIZE: <b><%= foundChallenge.prize %>€</b></p>
+    <p class="showDate">END DATE: <b><%= foundChallenge.date %></b></p>
+    <p><%= foundChallenge.description %></p>
+    <div>
+        <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/new">Post a solution</a>
+    </div>    
+</div>
+<div class="rowCSS">
+    <% foundChallenge.solutions.forEach(function(solution) { %>
+        <p><%= solution.solutionTitle %></p>
+        <p><%= solution.solutionText %></p>
+    <% }); %> 
+</div>
+
+<% include ../partials/footer %>
