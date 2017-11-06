@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<div class="rowCSS showChallenges">
+<div class="rowCSS showChallenge">
     <h3><%= foundChallenge.title %></h3>
     <p class="showPrize">PRIZE: <b><%= foundChallenge.prize %>€</b></p>
     <p class="showDate">END DATE: <b><%= foundChallenge.date %></b></p>
@@ -9,7 +9,8 @@
         <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/new">Post a solution</a>
     </div>    
 </div>
-<div class="rowCSS">
+
+<div class="rowCSS showSolutions">
     <% foundChallenge.solutions.forEach(function(solution) { %>
         <p><%= solution.solutionTitle %></p>
         <p><%= solution.solutionText %></p>
