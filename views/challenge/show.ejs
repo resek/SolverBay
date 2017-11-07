@@ -10,11 +10,15 @@
     </div>    
 </div>
 
-<div class="rowCSS showSolutions">
-    <% foundChallenge.solutions.forEach(function(solution) { %>
-        <p><%= solution.solutionTitle %></p>
-        <p><%= solution.solutionText %></p>
-    <% }); %> 
+<div class="showSolutions">
+    <div class="rowCSS">      
+        <% foundChallenge.solutions.forEach(function(solution) { %>
+            <div class="solutionBox">
+                <p><%= solution.solutionTitle %></p>
+                <p><%= solution.solutionText %></p>
+            </div>
+        <% }); %>
+    </div>         
 </div>
 
 <% include ../partials/footer %>

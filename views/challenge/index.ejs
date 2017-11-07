@@ -1,19 +1,24 @@
 <% include ../partials/header %>
 
-<div class="rowCSS">
-    <h2>List of all challenges</h2>
+<div class="indexWrapper">
+    <div class="rowCSS">
+        <h2>List of all challenges</h2>
+    </div>
+
+    <div class="rowCSS">
+        <% challenges.forEach(function(challenge) { %>
+            <div class="indexChallenges">
+                <h3><%= challenge.title %></h3>
+                <div>
+                    <p class="indexPrize">PRIZE: <b><%= challenge.prize %>€</b></p>
+                    <p class="indexDate">DATE: <b><%= challenge.date %></b></p>
+                </div>                
+                <p><%= challenge.description.substring(0, 220) %>...</p>            
+                <a class="btn btnFull" href="/challenges/<%= challenge._id %>">Solve it</a>
+            </div>
+        <% }); %>
+    </div>
 </div>
 
-<div class="rowCSS">
-    <% challenges.forEach(function(challenge) { %>
-        <div class="indexChallenges">
-            <h3><%= challenge.title %></h3>
-            <p><%= challenge.description.substring(0, 180) %>...</p>
-            <p>Prize <%= challenge.prize %> €</p>
-            <p><%= challenge.date %></p>
-            <a class="btn btnFull" href="/challenges/<%= challenge._id %>"></a>
-        </div>
-    <% }); %>
-</div>
 
 <% include ../partials/footer %>
