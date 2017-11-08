@@ -1,0 +1,15 @@
+<% include ../partials/header %>
+
+<div class="rowCSS">
+    <h3>Edit your solution for challenge: "<%=foundChallenge.title%>"</h3>
+    <form action="/challenges/<%= foundChallenge._id %>/solutions/<%= foundSolution._id %>?_method=PUT" method="POST">
+        <label for="solutionTitle">Title</label>
+        <input type="text" name="solutionTitle" id="solutionTitle" value="<%= foundSolution.solutionTitle %>">
+        
+        <label for="solutionText">Your solution</label>
+        <textarea name="solutionText" id="solutionText" rows="15"><%= foundSolution.solutionText %></textarea>
+        <input type="submit" class="btn btnFull">
+    </form>
+</div>
+
+<% include ../partials/footer %>
