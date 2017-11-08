@@ -92,7 +92,8 @@ li {
     margin: auto;
 }
 
-.btn:link, .btn:visited, input[type=submit] { 
+.btn:link, .btn:visited, input[type=submit] {
+    cursor:pointer; 
     display: inline-block;
     padding: 10px 30px;
     text-decoration: none;    
@@ -105,7 +106,7 @@ li {
 .btnFull:link, .btnFull:visited, input[type=submit] {
     background-color: #3498db;
     color: #fff;
-    margin-right: 15px;
+    margin-right: 10px;
     border: 2px solid #3498db;
 }
 
@@ -410,7 +411,7 @@ footer .col-sm-6 {
 }
 
 .indexChallenges a {
-    font-size: 75%;
+    font-size: 80%;
     margin-top: 15px;
 }
 
@@ -464,9 +465,39 @@ footer .col-sm-6 {
     border-radius: 7px;
     box-shadow: 0 2px 2px #aeaeaf;
     padding: 15px;
+    position: relative;
+}
+
+.solutionBox div {
+    display: inline-block;
+}
+
+.solutionBox div:first-child {
+    width: 78%;
+}
+
+.solutionBox div:last-child {
+    position: absolute;
+    font-size: 80%;
+    top: 15px;
+    right: 5px;
+}
+
+.solutionBox div:last-child form, a {
+    display: inline-block;
 }
 
 .solutionBox p:first-child  {
     font-weight: 700;
     margin-bottom: 10px;
+}
+
+.solutionBox input[type=submit] {
+    background: #aa1212;
+    border: 2px solid #aa1212;
+}
+
+.solutionBox input[type=submit]:hover, .solutionBox input[type=submit]:active {
+    background: #7f0707;
+    border: 2px solid #7f0707;
 }

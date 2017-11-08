@@ -14,12 +14,16 @@
     <div class="rowCSS">      
         <% foundChallenge.solutions.forEach(function(solution) { %>
             <div class="solutionBox">
-                <p><%= solution.solutionTitle %></p>
-                <p><%= solution.solutionText %></p>
-                <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/<%= solution._id%>/edit">Edit</a>
-                <form method="POST" action="/challenges/<%= foundChallenge._id %>/solutions/<%= solution._id %>?_method=DELETE">
-                    <input type="submit" class="btn btnFull" value="Delete">
-                </form>
+                <div>
+                    <p><%= solution.solutionTitle %></p> 
+                    <p><%= solution.solutionText %></p>
+                </div>
+                <div>
+                    <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/<%= solution._id%>/edit">Edit</a>
+                    <form method="POST" action="/challenges/<%= foundChallenge._id %>/solutions/<%= solution._id %>?_method=DELETE">
+                        <input type="submit" class="btn btnFull" value="Delete">
+                    </form>
+                </div>       
             </div>
         <% }); %>
     </div>         
