@@ -1,5 +1,8 @@
 var express         = require('express');
 var methodOverride  = require('method-override');
+var passport        = require('passport');
+var LocalStrategy   = require('passport-local');
+var session         = require('express-session');
 var bodyParser      = require('body-parser');
 var mongoose        = require('mongoose');
 var seedDB          = require("./seeds");
@@ -7,6 +10,7 @@ var app             = express();
 
 var Challenge = require ("./models/challenge");
 var Solution = require ("./models/solution");
+var User = require('./models/user');
 
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
@@ -15,6 +19,68 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect("mongodb://localhost/idea_crowd");
 
 seedDB();
+
+//user register / login settings
+app.use(session({
+  secret: 'global knowledge',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+//secret route
+app.get ("/secret", isLoggedIn, function(req, res) {
+  res.render ("secret");
+});
+
+//sign up form
+app.get ("/register", function(req, res) {
+  res.render ("register");
+});
+
+//handling user sign up
+app.post ("/register", function(req, res) {
+  User.register (new User ({username: req.body.username}), req.body.password, function (err, user) {
+    if (err) {
+        console.log(err);
+        return res.render("register");
+    } else {
+      passport.authenticate("local")(req, res, function(){
+        res.redirect ("/secret");
+      });  
+    }
+  });
+});
+
+//login form
+app.get ("/login", function (req, res) {
+  res.render ("login");
+});
+
+//login logic
+app.post ("/login", passport.authenticate("local", {
+  successRedirect: "/secret",
+  failureRedirect: "/login"
+}), function(req, res) {
+});
+
+//logout route
+app.get ("/logout", function(req, res) {
+  req.logout();
+  res.redirect ("/");
+});
+
+function isLoggedIn (req, res, next) {
+  if (req.isAuthenticated()) {
+     return next();
+  }
+  res.redirect("/login");
+}
 
 //homepage
 app.get('/', function (req, res) {
