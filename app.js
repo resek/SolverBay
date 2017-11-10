@@ -5,6 +5,7 @@ var LocalStrategy   = require('passport-local');
 var session         = require('express-session');
 var bodyParser      = require('body-parser');
 var mongoose        = require('mongoose');
+var flash           = require('connect-flash');
 var seedDB          = require("./seeds");
 var app             = express();
 
@@ -12,30 +13,29 @@ var Challenge = require ("./models/challenge");
 var Solution = require ("./models/solution");
 var User = require('./models/user');
 
+seedDB();
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect("mongodb://localhost/idea_crowd");
-
-seedDB();
-
-//user register / login settings
 app.use(session({
   secret: 'global knowledge',
   resave: false,
   saveUninitialized: false
 }));
+app.use(flash());
+
+//user register / login settings
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
-//secret route
-app.get ("/secret", isLoggedIn, function(req, res) {
-  res.render ("secret");
+app.use(function(req, res, next) {
+  res.locals.messages = req.flash('info');
+  next();
 });
 
 //sign up form
@@ -51,7 +51,7 @@ app.post ("/register", function(req, res) {
         return res.render("register");
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect ("/secret");
+        res.redirect ("/");
       });  
     }
   });
@@ -64,7 +64,7 @@ app.get ("/login", function (req, res) {
 
 //login logic
 app.post ("/login", passport.authenticate("local", {
-  successRedirect: "/secret",
+  successRedirect: "/",
   failureRedirect: "/login"
 }), function(req, res) {
 });
@@ -79,6 +79,7 @@ function isLoggedIn (req, res, next) {
   if (req.isAuthenticated()) {
      return next();
   }
+  req.flash('info', 'You have to be logged in!');
   res.redirect("/login");
 }
 
@@ -105,7 +106,7 @@ app.get("/challenges", function (req, res) {
 });
 
 //challenges - new
-app.get("/challenges/new", function(req, res) {
+app.get("/challenges/new", isLoggedIn, function(req, res) {
   res.render("challenge/new");
 });
 
@@ -133,7 +134,7 @@ app.get("/challenges/:id", function (req, res) {
 });
 
 //solutions - new
-app.get ("/challenges/:id/solutions/new", function (req, res) {
+app.get ("/challenges/:id/solutions/new", isLoggedIn, function (req, res) {
   Challenge.findById (req.params.id, function (err, foundChallenge) {
       if(err) {
           console.log (err);

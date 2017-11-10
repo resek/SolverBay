@@ -29,6 +29,11 @@
                     <li><a href="/login">Log in</a></li>
                     <li><a href="/register">Sign up</a></li>
                 </ul> 
-            </nav>
+            </nav>            
         </header>
         <div class="contentWrapper">
+            <% if (messages && messages.length > 0) { %>
+                <div class="flashMessages">
+                    <p><%= messages %></p>
+                </div>
+            <% } %>
