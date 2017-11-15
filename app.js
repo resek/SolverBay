@@ -1,13 +1,14 @@
-var express         = require('express');
-var methodOverride  = require('method-override');
-var passport        = require('passport');
-var LocalStrategy   = require('passport-local').Strategy;
-var session         = require('express-session');
-var bodyParser      = require('body-parser');
-var mongoose        = require('mongoose');
-var flash           = require('connect-flash');
-var seedDB          = require("./seeds");
-var app             = express();
+var express           = require('express');
+var methodOverride    = require('method-override');
+var passport          = require('passport');
+var LocalStrategy     = require('passport-local').Strategy;
+var session           = require('express-session');
+var bodyParser        = require('body-parser');
+var mongoose          = require('mongoose');
+var flash             = require('connect-flash');
+var expressValidator  = require('express-validator');
+var seedDB            = require("./seeds");
+var app               = express();
 
 var challengeRoutes = require ("./routes/challenges");
 var indexRoutes = require ("./routes/index");
@@ -21,6 +22,7 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressValidator());
 mongoose.connect("mongodb://localhost/idea_crowd");
 app.use(flash());
 app.use(session({
@@ -29,21 +31,21 @@ app.use(session({
   saveUninitialized: false
 }));
 
-
 //passportjs config
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
+
 passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
     done(err, user);
   });
 });
-passport.use(new LocalStrategy({
-  usernameField: 'email',
-  },  
+
+passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username }, function(err, user) {
       if (err) { return done(err); }
@@ -64,6 +66,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+//use routes 
 app.use (indexRoutes);
 app.use (challengeRoutes);
 app.use (solutionRoutes);

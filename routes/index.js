@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Challenge = require ("../models/challenge");
+var User = require ("../models/user");
 var passport = require ("passport");
 
 //homepage
@@ -21,15 +22,27 @@ router.get ("/register", function(req, res) {
 
 //handling user sign-up
 router.post ("/register", function(req, res) {
+    // var password = req.body.password;
+    // var password2 = req.body.password2;
+    // //validatio
+    // req.checkBody("password2", "Passwords do not match!").equals(req.body.password);
+    // if (req.validationErrors) {
+    //     req.flash("info", "Passwords do not match!")
+    //     res.redirect("/register");
+    // }
     User.create (req.body, function (err, newUser) {
         if (err) {
-            console.log(err);
-            return res.render("register");
+            if (err.errors.username !== undefined) { //from uniqueValidator mongoose plugin
+                req.flash("info", err.errors.username.message);
+                res.redirect("/register");
+            } else if (err.errors.email !== undefined) {
+                req.flash("info", err.errors.email.message);
+                res.redirect("/register");
+            }            
         } else {
-        passport.authenticate ("local")(req, res, function() {
             res.redirect("/");
-        });
-        }
+        } 
+        
     });
 });
 
@@ -38,7 +51,7 @@ router.get ("/login", function (req, res) {
     res.render ("login");
 });
 
-//login logic
+//handling login
 router.post ("/login", passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login"})
