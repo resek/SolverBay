@@ -37,3 +37,9 @@
                     <p><%= messages %></p>
                 </div>
             <% } %>
+            
+            <% if (errMessages && errMessages.length > 0) { %>
+                <div class="flashMessages">
+                    <p><%= errMessages %></p>
+                </div>
+            <% } %>

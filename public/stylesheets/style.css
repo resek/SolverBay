@@ -320,9 +320,9 @@ li {
 }
 
 .flashMessages {
-    width: 450px;
+    width: 400px;
     height: 50px;
-    background: #aa1212;
+    background: #db730a;
     margin: 30px auto;
     border-radius: 7px;
     text-align: center;

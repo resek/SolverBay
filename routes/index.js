@@ -22,28 +22,35 @@ router.get ("/register", function(req, res) {
 
 //handling user sign-up
 router.post ("/register", function(req, res) {
-    // var password = req.body.password;
-    // var password2 = req.body.password2;
-    // //validatio
-    // req.checkBody("password2", "Passwords do not match!").equals(req.body.password);
-    // if (req.validationErrors) {
-    //     req.flash("info", "Passwords do not match!")
-    //     res.redirect("/register");
-    // }
-    User.create (req.body, function (err, newUser) {
-        if (err) {
-            if (err.errors.username !== undefined) { //from uniqueValidator mongoose plugin
-                req.flash("info", err.errors.username.message);
-                res.redirect("/register");
-            } else if (err.errors.email !== undefined) {
-                req.flash("info", err.errors.email.message);
-                res.redirect("/register");
+    
+    var password = req.body.password;
+    var password2 = req.body.password2;
+    
+    //express validator
+    req.checkBody("password2").equals(req.body.password);
+    var errors = req.validationErrors();
+    
+    if(errors) {
+        req.flash("info", "passwords do not match");
+        res.redirect("/register");
+    } else {
+        User.create (req.body, function (err, newUser) {
+            if (err) {
+                if (err.errors.username !== undefined) { //from uniqueValidator mongoose plugin
+                    req.flash("info", err.errors.username.message);
+                    res.redirect("/register");
+                } else if (err.errors.email !== undefined) {
+                    req.flash("info", err.errors.email.message);
+                    res.redirect("/register");
+                }            
+            } else {
+                passport.authenticate ("local")(req, res, function() {
+                    req.flash ("info", "welcome on board :)");
+                    res.redirect("/");
+                });
             }            
-        } else {
-            res.redirect("/");
-        } 
-        
-    });
+        });
+    }    
 });
 
 //login form
@@ -52,9 +59,10 @@ router.get ("/login", function (req, res) {
 });
 
 //handling login
-router.post ("/login", passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login"})
+router.post('/login',
+passport.authenticate('local', { successRedirect: '/',
+                                 failureRedirect: '/login',
+                                 failureFlash: true  })
 );
 
 //logout route
