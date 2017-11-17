@@ -66,6 +66,7 @@ passport.use(new LocalStrategy({
 app.use(function(req, res, next) {
   res.locals.messages = req.flash('info');
   res.locals.errMessages = req.flash("error");
+  res.locals.currentUser = req.user;
   next();
 });
 

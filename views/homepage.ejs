@@ -27,9 +27,14 @@
     <header class="homeHeader">
         <nav class="rowCSS">
             <a href="/"><img class="logoWhite" src="/images/logoWhite.png" alt="logoWhite"></a>
-            <ul class="homeNavbar">                
-                <li><a href="/login">Log in</a></li>
-                <li><a href="/register">Sign up</a></li>
+            <ul class="homeNavbar"> 
+                <% if (currentUser)  { %>
+                    <li><%= currentUser.username %></li>
+                    <li><a href="/logout">Logout</a></li>
+                <% } else { %>                       
+                    <li><a href="/login">Log in</a></li>
+                    <li><a href="/register">Sign up</a></li>
+                <% } %> 
             </ul> 
         </nav>
         

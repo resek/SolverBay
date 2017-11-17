@@ -5,6 +5,7 @@
     <p class="showPrize">PRIZE: <b><%= foundChallenge.prize %>€</b></p>
     <p class="showDate">END DATE: <b><%= foundChallenge.date %></b></p>
     <p><%= foundChallenge.description %></p>
+    <p class="author">posted by <%= foundChallenge.author.username %></p>
     <div>
         <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/new">Post a solution</a>
     </div>    
@@ -17,6 +18,7 @@
                 <div>
                     <p><%= solution.solutionTitle %></p> 
                     <p><%= solution.solutionText %></p>
+                    <p class="author">posted by <%= solution.author.username %></p>
                 </div>
                 <div>
                     <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/<%= solution._id%>/edit">Edit</a>

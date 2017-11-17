@@ -13,7 +13,8 @@
                     <p class="indexPrize">PRIZE: <b><%= challenge.prize %>€</b></p>
                     <p class="indexDate">DATE: <b><%= challenge.date %></b></p>
                 </div>                
-                <p><%= challenge.description.substring(0, 220) %>...</p>            
+                <p><%= challenge.description.substring(0, 220) %>...</p>
+                <p class="author">posted by <%= challenge.author.username %></p>            
                 <a class="btn btnFull" href="/challenges/<%= challenge._id %>">Solve it</a>
             </div>
         <% }); %>

@@ -25,6 +25,9 @@ router.post("/challenges", function(req, res) {
         if(err) {
             console.log(err);
         } else {
+            newChallenge.author.username = req.user.username;
+            newChallenge.author.id = req.user._id;
+            newChallenge.save();
             res.redirect ("/challenges");
         }
     });

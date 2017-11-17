@@ -87,6 +87,12 @@ li {
     display: inline-block;
 }
 
+.author {
+    font-style: italic;
+    font-size: 80%;
+    margin-top: 12px;
+}
+
 .rowCSS {
     max-width: 1140px;
     margin: auto;
@@ -163,6 +169,11 @@ li {
 
 .homeNavbar li {
     margin-left: 22px;
+}
+
+.homeNavbar li:first-child {
+    color: #fff;
+    font-style: italic;
 }
 
 .homeNavbar a:link, .homeNavbar a:visited {
@@ -296,21 +307,24 @@ li {
     font-size: 90%;
 }
 
+.navbarLinks li:first-of-type {
+    color: #3498db;
+    font-style: italic;
+}
+
 .navbarLinks li {
     margin-right: 25px;
 }
 
 .navbarLinks a:link, .navbarLinks a:visited {
-    color: #606060;
+    color: #3498db;
     text-transform: uppercase;
-    border-bottom: solid 2px transparent;
-    -webkit-transition: border-bottom 0.3s;
-    transition: border-bottom 0.3s;
-    padding-bottom: 22px;   
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;  
 }
 
 .navbarLinks a:hover, .navbarLinks a:active  {
-    border-bottom: solid 2px #3498db;
+    color: #196090;
 }
 
 .logoBlack {
@@ -446,6 +460,7 @@ footer .col-sm-6 {
 .indexDate {
     display: inline-block;
 }
+
 /* ------------------------------- */
 /* VIEWS > CHALLENGES > SHOW.EJS */
 /* ------------------------------- */

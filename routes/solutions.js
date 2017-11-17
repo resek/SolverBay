@@ -24,7 +24,10 @@ router.post ("/challenges/:id/solutions", function (req, res) {
             Solution.create (req.body, function(err, newSolution) {
                 if(err) {
                     console.log(err);
-                } else { 
+                } else {
+                    newSolution.author.username = req.user.username;
+                    newSolution.author.id = req.user._id;
+                    newSolution.save(); 
                     foundChallenge.solutions.push(newSolution);
                     foundChallenge.save();                
                     res.redirect ("/challenges/" + req.params.id);
