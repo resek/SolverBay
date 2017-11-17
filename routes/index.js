@@ -67,6 +67,7 @@ passport.authenticate('local', { successRedirect: '/',
 
 //logout route
 router.get ("/logout", function(req, res) {
+    req.flash("info", "you have been logged out")
     req.logout();
     res.redirect ("/");
 });

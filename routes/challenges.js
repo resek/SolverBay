@@ -45,4 +45,39 @@ router.get("/challenges/:id", function (req, res) {
     });
 });
 
+//edit
+router.get ("/challenges/:id/edit", function (req, res) {
+    Challenge.findById(req.params.id, function(err, foundChallenge) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render ("challenge/edit", {foundChallenge: foundChallenge});
+        }
+    });
+});
+
+//update
+router.put ("/challenges/:id", function (req, res) {
+    Challenge.findByIdAndUpdate (req.params.id, req.body, function (err) {
+        if(err) {
+            console.log(err); 
+        } else {
+            req.flash ("info", "your challenge has been updated");
+            res.redirect ("/challenges/" + req.params.id);
+        }
+    });
+});
+
+//delete
+router.delete ("/challenges/:id", function(req, res) {
+    Challenge.findByIdAndRemove (req.params.id, function (err) {
+        if(err) {
+            console.log(err);
+        } else {
+            req.flash ("info", "your challenge has been deleted");
+            res.redirect ("/challenges");
+        }
+    });
+});
+
 module.exports = router;

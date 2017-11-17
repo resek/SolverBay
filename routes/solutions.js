@@ -56,11 +56,11 @@ router.get ("/challenges/:id/solutions/:solutionId/edit", function (req, res) {
 
 //solutions - update
 router.put ("/challenges/:id/solutions/:solutionId", function (req, res) {
-    console.log(req.body);
     Solution.findByIdAndUpdate (req.params.solutionId, req.body, function (err) {
         if(err) {
             console.log(err); 
         } else {
+            req.flash("info", "solution has been updated");
             res.redirect ("/challenges/" + req.params.id);
         }
     });
@@ -78,6 +78,7 @@ router.delete ("/challenges/:id/solutions/:solutionId", function(req, res) {
                 } else {
                     foundChallenge.solutions.remove(req.params.solutionId); 
                     foundChallenge.save();
+                    req.flash("info", "solution has been deleted")
                     res.redirect ("/challenges/" + req.params.id);
                 }
             });

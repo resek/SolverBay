@@ -6,6 +6,14 @@
     <p class="showDate">END DATE: <b><%= foundChallenge.date %></b></p>
     <p><%= foundChallenge.description %></p>
     <p class="author">posted by <%= foundChallenge.author.username %></p>
+    
+    <% if(currentUser && foundChallenge.author.id.equals(currentUser.id)) { %>
+        <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/edit">Edit</a>
+        <form method="POST" action="/challenges/<%= foundChallenge._id %>?_method=DELETE">
+            <input type="submit" class="btn btnFull" value="Delete">
+        </form>
+    <% } %>
+
     <div>
         <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/new">Post a solution</a>
     </div>    
@@ -21,10 +29,12 @@
                     <p class="author">posted by <%= solution.author.username %></p>
                 </div>
                 <div>
-                    <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/<%= solution._id%>/edit">Edit</a>
-                    <form method="POST" action="/challenges/<%= foundChallenge._id %>/solutions/<%= solution._id %>?_method=DELETE">
-                        <input type="submit" class="btn btnFull" value="Delete">
-                    </form>
+                    <% if(currentUser && solution.author.id.equals(currentUser.id)) { %>
+                        <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/<%= solution._id%>/edit">Edit</a>
+                        <form method="POST" action="/challenges/<%= foundChallenge._id %>/solutions/<%= solution._id %>?_method=DELETE">
+                            <input type="submit" class="btn btnFull" value="Delete">
+                        </form>
+                    <% } %>
                 </div>       
             </div>
         <% }); %>
