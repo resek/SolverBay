@@ -29,7 +29,7 @@
             <a href="/"><img class="logoWhite" src="/images/logoWhite.png" alt="logoWhite"></a>
             <ul class="homeNavbar"> 
                 <% if (currentUser)  { %>
-                    <li><%= currentUser.username %></li>
+                    <li class="homepageUser"><%= currentUser.username %></li>
                     <li><a href="/logout">Logout</a></li>
                 <% } else { %>                       
                     <li><a href="/login">Log in</a></li>

@@ -38,7 +38,7 @@ router.post ("/challenges/:id/solutions", function (req, res) {
 });
 
 //solutions - edit
-router.get ("/challenges/:id/solutions/:solutionId/edit", function (req, res) {
+router.get ("/challenges/:id/solutions/:solutionId/edit", middleware.checkSolutionOwnership, function (req, res) {
     Challenge.findById(req.params.id, function(err, foundChallenge) {
         if(err) {
             console.log(err);
@@ -55,7 +55,7 @@ router.get ("/challenges/:id/solutions/:solutionId/edit", function (req, res) {
 });
 
 //solutions - update
-router.put ("/challenges/:id/solutions/:solutionId", function (req, res) {
+router.put ("/challenges/:id/solutions/:solutionId", middleware.checkSolutionOwnership, function (req, res) {
     Solution.findByIdAndUpdate (req.params.solutionId, req.body, function (err) {
         if(err) {
             console.log(err); 
@@ -67,7 +67,7 @@ router.put ("/challenges/:id/solutions/:solutionId", function (req, res) {
 });
 
 //solutions - delete
-router.delete ("/challenges/:id/solutions/:solutionId", function(req, res) {
+router.delete ("/challenges/:id/solutions/:solutionId", middleware.checkSolutionOwnership, function(req, res) {
     Solution.findByIdAndRemove (req.params.solutionId, function (err) {
         if(err) {
             console.log(err);

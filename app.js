@@ -52,7 +52,7 @@ passport.use(new LocalStrategy({
     User.findOne({ email: email }, function(err, user) {
       if (err) { return done(err); }
       if (!user) {
-        return done(null, false, { message: 'incorrect username' });
+        return done(null, false, { message: 'incorrect email' });
       }
       if (!user.validPassword(password)) {
         return done(null, false, { message: 'incorrect password' });

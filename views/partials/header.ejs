@@ -27,7 +27,7 @@
                 <a href="/"><img class="logoBlack" src="/images/logoBlack.png" alt="logoBlack"></a>          
                 <ul class="navbarLinks">
                     <% if (currentUser)  { %>
-                        <li><%= currentUser.username %></li>
+                        <li class="headerUser"><%= currentUser.username %></li>
                         <li><a href="/logout">Logout</a></li>
                     <% } else { %>
                         <li><a href="/login">Log in</a></li>

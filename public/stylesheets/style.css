@@ -171,7 +171,7 @@ li {
     margin-left: 22px;
 }
 
-.homeNavbar li:first-child {
+.homepageUser {
     color: #fff;
     font-style: italic;
 }
@@ -307,8 +307,8 @@ li {
     font-size: 90%;
 }
 
-.navbarLinks li:first-of-type {
-    color: #3498db;
+.headerUser {
+    color: #606060;
     font-style: italic;
 }
 
@@ -481,6 +481,22 @@ footer .col-sm-6 {
 .showChallenge div {
     margin: 50px 0;
     text-align: center;
+}
+
+.showChallenge form, #showChallengeEdit {
+    display: inline-block;
+    font-size: 80%;
+    margin-top: 20px;
+}
+
+.showChallenge input[type=submit] {
+    background: #aa1212;
+    border: 2px solid #aa1212;
+}
+
+.showChallenge input[type=submit]:hover, .showChallenge input[type=submit]:active {
+    background: #7f0707;
+    border: 2px solid #7f0707;
 }
 
 .showSolutions {
