@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var Challenge = require ("../models/challenge");
+var Token = require ("../models/token");
 var User = require ("../models/user");
 var passport = require ("passport");
+var nodemailer = require ("nodemailer");
+var crypto = require ("crypto-browserify");
 
-//homepage
+//HOMEPAGE
 router.get('/', function (req, res) {
     Challenge.find({}).sort("date").exec(function(err, challenges) {
         if(err) {
@@ -15,12 +18,12 @@ router.get('/', function (req, res) {
     });
 });
 
-//sign-up form
+//SIGN-UP FORM
 router.get ("/register", function(req, res) {
     res.render ("register");
 });
 
-//handling user sign-up
+//HANDLING SIGN-UP
 router.post ("/register", function(req, res) {
     
     var password = req.body.password;
@@ -34,7 +37,7 @@ router.post ("/register", function(req, res) {
         req.flash("info", "passwords do not match");
         res.redirect("/register");
     } else {
-        User.create (req.body, function (err, newUser) {
+        User.create (req.body, function (err, user) {
             if (err) {
                 if (err.errors.username !== undefined) { //from uniqueValidator mongoose plugin
                     req.flash("info", err.errors.username.message);
@@ -44,32 +47,94 @@ router.post ("/register", function(req, res) {
                     res.redirect("/register");
                 }            
             } else {
-                passport.authenticate ("local")(req, res, function() {
-                    req.flash ("info", "welcome on board :)");
-                    res.redirect("/");
+                
+                // create a verification token for this user
+                var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
+                token.save();
+                
+                //set nodemailer
+                var transporter = nodemailer.createTransport({
+                    host: 'mail.sloveniafood.com',
+                    port: 465,
+                    secure: true, 
+                    auth: {
+                        user: "hello@sloveniafood.com",
+                        pass: "posta1234"
+                        },
+                    tls: { rejectUnauthorized: false }
+                });
+
+                // setup email data
+                var mailOptions = {
+                    from: '"SolverBay" <hello@sloveniafood.com>', // sender address
+                    to: user.email, // list of receivers
+                    subject: 'Account Verification Token',
+                    text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token,
+                };
+
+                // send mail with defined transport object
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.log(error);
+                    }
+                    console.log("message has been sent");
+                    req.flash("info", "check your email for confirmation")
+                    res.redirect("/register");
                 });
             }            
         });
     }    
 });
 
-//login form
+
+//EMAIL CONFIRMATION HANDLING
+router.get('/confirmation/:token', function(req, res) {    
+    Token.findOne({ token: req.params.token }, function (err, token) {
+        if (!token) {
+            req.flash("info", "not valid or expired token")
+            res.redirect("/register");
+        } else {            
+            User.findOne({ _id: token._userId }, function (err, user) {
+                if (!user) {
+                    console.log(err);
+                    req.flash("info", "user for this token not found");
+                    res.redirect("/register");
+                } else if (user.isVerified) {
+                    req.flash("info", "user has already been verified");
+                    res.redirect("/register");
+                } else {
+                    user.isVerified = true;
+                    user.save(function (err) {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            req.flash("info", "account has been verified, please login");
+                            res.redirect("/login");
+                        }                     
+                    });                    
+                }
+            });
+        }
+    });
+});
+
+//LOGIN FORM
 router.get ("/login", function (req, res) {
     res.render ("login");
 });
 
-//handling login
+//HANDLING LOGIN
 router.post('/login',
 passport.authenticate('local', { successRedirect: '/',
                                  failureRedirect: '/login',
                                  failureFlash: true  })
 );
 
-//logout route
+//LOGOUT ROUTE
 router.get ("/logout", function(req, res) {
     req.flash("info", "you have been logged out")
     req.logout();
-    res.redirect ("/");
+    res.redirect ("/login");
 });
 
 module.exports = router;
