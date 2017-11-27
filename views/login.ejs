@@ -1,14 +1,15 @@
 <% include partials/header %>
 
-<h2>Login</h2>
-<form action="/login" method="POST">
-    <div>
-        <input type="email" name="email" placeholder="email" maxlength="40" required></input>
-    </div>
-    <div>
-        <input type="password" name="password" placeholder="password" maxlength="15" required></input>
-    </div>
-    <button class="btn btnFull">Login</button>
-</form>
+<div class="rowCSS loginRegisterForm">
+    <form action="/login" method="POST">
+        <div>
+            <input type="email" name="email" placeholder="email" maxlength="40" required></input>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="password" maxlength="15" required></input>
+        </div>                 
+        <input type="submit" class="btn btnFull" value="Login">
+    </form>
+</div>
 
 <% include partials/footer %>

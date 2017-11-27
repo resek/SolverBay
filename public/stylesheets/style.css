@@ -546,3 +546,34 @@ footer .col-sm-6 {
     background: #7f0707;
     border: 2px solid #7f0707;
 }
+
+/* ------------------------------- */
+/*    VIEWS > LOGIN / REGISTER */
+/* ------------------------------- */
+
+.loginRegisterForm {
+    margin-top: 60px;
+}
+
+.loginRegisterForm form {
+    margin: 0 auto;
+    width: 350px;
+    text-align: center;
+}
+
+.loginRegisterForm input[type=email],
+.loginRegisterForm input[type=text],
+.loginRegisterForm input[type=password] {
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 7px;
+    border-radius: 7px;
+    border: 2px solid #333;
+    outline: none;
+}
+
+.loginRegisterForm input[type=email]:focus,
+.loginRegisterForm input[type=text]:focus,
+.loginRegisterForm input[type=password]:focus {
+    color: #aa1212;
+}
