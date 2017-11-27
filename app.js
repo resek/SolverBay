@@ -79,6 +79,11 @@ app.use (indexRoutes);
 app.use (challengeRoutes);
 app.use (solutionRoutes);
 
+//if route does not exist
+app.get('*', function(req, res){
+  res.redirect("/");
+});
+
 //server config
 app.listen(3000, function () {
   console.log('App has started!')

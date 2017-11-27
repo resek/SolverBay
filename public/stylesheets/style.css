@@ -100,6 +100,7 @@ li {
 
 .btn:link, .btn:visited, input[type=submit] {
     cursor:pointer; 
+    outline: none;
     display: inline-block;
     padding: 10px 30px;
     text-decoration: none;    
@@ -552,7 +553,7 @@ footer .col-sm-6 {
 /* ------------------------------- */
 
 .loginRegisterForm {
-    margin-top: 60px;
+    margin-top: 50px;
 }
 
 .loginRegisterForm form {
@@ -570,10 +571,26 @@ footer .col-sm-6 {
     border-radius: 7px;
     border: 2px solid #333;
     outline: none;
+    color: #3498db;
 }
 
 .loginRegisterForm input[type=email]:focus,
 .loginRegisterForm input[type=text]:focus,
 .loginRegisterForm input[type=password]:focus {
     color: #aa1212;
+}
+
+
+.loginRegisterForm a:link,
+.loginRegisterForm a:visited {
+    font-size: 82%;
+    color: #3498db;
+    margin-top: 10px;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s; 
+}
+
+.loginRegisterForm a:hover,
+.loginRegisterForm a:active {
+    color: #196090;     
 }
