@@ -123,7 +123,7 @@ router.get ("/passwordemail", function (req, res) {
     res.render("password/email");
 });
 
-//SEND  PASSWORD RESET EMAIL
+//SEND PASSWORD RESET EMAIL
 router.post ("/passwordemail", function(req, res) {
     User.findOne({email: req.body.email}, function(err, user) {
         if(!user) {
@@ -167,6 +167,7 @@ router.post ("/passwordemail", function(req, res) {
     });
 });
 
+//CHECK FOR RESET TOKEN FROM EMAIL LINK
 router.get('/reset/:token', function(req, res) {    
     Token.findOne({ token: req.params.token }, function (err, token) {
         if (!token) {
@@ -178,6 +179,7 @@ router.get('/reset/:token', function(req, res) {
     });
 });
 
+//RESET PASSWORD
 router.post("/reset", function(req, res) {
     
     var password = req.body.password;

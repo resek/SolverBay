@@ -15,7 +15,7 @@ var indexRoutes = require ("./routes/index");
 var solutionRoutes = require ("./routes/solutions");
 var User = require('./models/user');
 
-seedDB();
+//seedDB();
 
 //app config
 app.use(methodOverride('_method'));
