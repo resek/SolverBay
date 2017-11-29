@@ -1,4 +1,5 @@
 //SET CHALLENGE DATE INPUT MIN ATTRIBUTE
+timer();
 tomorrow();
 sevenDays();
 function tomorrow(){
@@ -43,3 +44,27 @@ function sevenDays(){
     document.getElementById("challengeDate").setAttribute("max", formattedSevenDays);
 }
 
+//COUNTDOWN TIMER
+
+function timer() {
+    var currentTime = Date.now();
+    var endTime = new Date(2017, 11, 25).getTime();
+
+    var remainingTime = endTime - currentTime;
+
+    var sec  = Math.floor (remainingTime / 1000);
+    var min  = Math.floor (sec / 60);
+    var hour = Math.floor (min / 60);  
+    var day = Math.floor (hour / 24);
+
+    sec %= 60;
+    min %= 60;
+    hour %= 24;
+
+    document.querySelector(".day").textContent = "Days: " + day;
+    document.querySelector(".hour").textContent = "Hours: " + hour;
+    document.querySelector(".min").textContent = "Min: " + min;
+    document.querySelector(".sec").textContent = "Sec:" + sec;
+    
+    setTimeout(timer, 1000);
+}

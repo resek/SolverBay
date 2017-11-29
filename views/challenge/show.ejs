@@ -3,7 +3,12 @@
 <div class="rowCSS showChallenge">
     <h3><%= foundChallenge.title %></h3>
     <p class="showPrize">PRIZE: <b><%= foundChallenge.prize %>€</b></p>
-    <p class="showDate">END DATE: <b><%= foundChallenge.date %></b></p>
+    <div class="timer">
+        <span class="day"></span>
+        <span class="hour"></span>
+        <span class="min"></span>
+        <span class="sec"></span>
+    </div>
     <p><%= foundChallenge.description %></p>
     <p class="author">posted by <%= foundChallenge.author.username %></p>
     
