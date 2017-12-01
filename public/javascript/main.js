@@ -1,7 +1,8 @@
-//SET CHALLENGE DATE INPUT MIN ATTRIBUTE
 timer();
-tomorrow();
-sevenDays();
+// tomorrow();
+// sevenDays();
+
+//SET CHALLENGE DATE INPUT MIN ATTRIBUTE
 function tomorrow(){
     var tomorrow = new Date();
     var numberOfDaysToAdd = 1;
@@ -23,6 +24,7 @@ function tomorrow(){
     document.getElementById("challengeDate").setAttribute("min", formattedTomorrow);
 }
 
+//SET CHALLENGE DATE INPUT MAX ATTRIBUTE
 function sevenDays(){
     var sevenDays = new Date();
     var numberOfDays = 7;
@@ -68,3 +70,13 @@ function timer() {
     
     setTimeout(timer, 1000);
 }
+                     
+//CHALLENGES API REQUEST
+var data;
+var xhr = new XMLHttpRequest();
+xhr.open ("GET", "http://localhost:3000/api/challenges");
+xhr.onload = function() {
+    data = JSON.parse(xhr.responseText);
+    console.log(data[0].date);
+};
+xhr.send();

@@ -9,7 +9,7 @@ router.get("/challenges", function (req, res) {
         if(err) {
             console.log(err);
         } else {
-            res.render("challenge/index", {challenges: challenges});
+            res.render("challenge/index", {challenges: challenges});            
         }
     });  
 });
@@ -79,5 +79,19 @@ router.delete ("/challenges/:id", middleware.checkChallengeOwnership, function(r
         }
     });
 });
+
+
+//challenges object API
+router.get('/api/challenges', function(req, res) {
+    Challenge.find({}, function(err, foundChallenges) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.json(foundChallenges);
+        }
+    });    
+});
+
+
 
 module.exports = router;
