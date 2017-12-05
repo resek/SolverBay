@@ -11,7 +11,13 @@
                 <h3><%= challenge.title %></h3>
                 <div>
                     <p class="indexPrize">PRIZE: <b><%= challenge.prize %>€</b></p>
-                    <p class="indexDate">DATE: <b><%= challenge.date %></b></p>
+                    <div class="timer">ENDS:
+                        <div class="challengeDate"><%= challenge.date %></div>
+                        <!-- <span class="day"></span> days -->
+                        <span class="hour"></span>h
+                        <span class="min"></span>m
+                        <span class="sec"></span>s
+                    </div>
                 </div>                
                 <p><%= challenge.description.substring(0, 220) %>...</p>
                 <p class="author">posted by <%= challenge.author.username %></p>            

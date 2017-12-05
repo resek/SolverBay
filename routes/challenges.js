@@ -80,18 +80,4 @@ router.delete ("/challenges/:id", middleware.checkChallengeOwnership, function(r
     });
 });
 
-
-//challenges object API
-router.get('/api/challenges', function(req, res) {
-    Challenge.find({}, function(err, foundChallenges) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.json(foundChallenges);
-        }
-    });    
-});
-
-
-
 module.exports = router;

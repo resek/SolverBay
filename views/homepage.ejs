@@ -67,7 +67,13 @@
                             <hr>
                             <div>
                                 <p>PRIZE: <span><%= challenges[i].prize %>€</span></p>
-                                <p>END DATE: <%= challenges[i].date %></p>
+                                <p class="timer">ENDS:
+                                    <div class="challengeDate"><%= challenges[i].date %></div>
+                                    <!-- <span class="day"></span> days -->
+                                    <span class="hour"></span>h
+                                    <span class="min"></span>m
+                                    <span class="sec"></span>s
+                                </p>
                             </div>                        
                             <hr>
                             <a class="btn btnFull" href="/challenges/<%= challenges[i]._id %>">Solve it</a>
@@ -153,6 +159,8 @@
             </div>
         </div>            
     </footer>
+
+    <script src="/javascript/main.js"></script>
     
 </body>
 </html>
