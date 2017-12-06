@@ -9,8 +9,15 @@ router.get ("/challenges/:id/solutions/new", middleware.isLoggedIn, function (re
     Challenge.findById (req.params.id, function (err, foundChallenge) {
         if(err) {
             console.log (err);
-        } else {          
-            res.render ("solution/new", {foundChallenge: foundChallenge}); 
+        } else {
+            var currentTime = new Date().toISOString();
+            var challengeTime = new Date(foundChallenge.date).toISOString();
+            if(currentTime >= challengeTime) {
+                req.flash("info", "time is out");
+                res.redirect("/challenges/" + req.params.id);
+            } else {
+                res.render ("solution/new", {foundChallenge: foundChallenge});
+            }             
         }
     });
 });
@@ -47,7 +54,14 @@ router.get ("/challenges/:id/solutions/:solutionId/edit", middleware.checkSoluti
                 if(err) {
                     console.log(err);
                 } else {
-                    res.render ("solution/edit", {foundChallenge: foundChallenge, foundSolution: foundSolution});
+                    var currentTime = new Date().toISOString();
+                    var challengeTime = new Date(foundChallenge.date).toISOString();
+                    if(currentTime >= challengeTime) {
+                        req.flash("info", "time is out");
+                        res.redirect("/challenges/" + req.params.id);
+                    } else {
+                        res.render ("solution/edit", {foundChallenge: foundChallenge, foundSolution: foundSolution});
+                    }                    
                 }
             });
         }

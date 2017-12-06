@@ -50,6 +50,9 @@ router.get ("/challenges/:id/edit", middleware.checkChallengeOwnership, function
     Challenge.findById(req.params.id, function(err, foundChallenge) {
         if(err) {
             console.log(err);
+        } else if (foundChallenge.solutions.length > 0) {
+            req.flash("info", "solutions already posted");
+            res.redirect ("/challenges/" + req.params.id);
         } else {
             res.render ("challenge/edit", {foundChallenge: foundChallenge});
         }
@@ -69,15 +72,15 @@ router.put ("/challenges/:id", middleware.checkChallengeOwnership, function (req
 });
 
 //delete
-router.delete ("/challenges/:id", middleware.checkChallengeOwnership, function(req, res) {
-    Challenge.findByIdAndRemove (req.params.id, function (err) {
-        if(err) {
-            console.log(err);
-        } else {
-            req.flash ("info", "your challenge has been deleted");
-            res.redirect ("/challenges");
-        }
-    });
-});
+// router.delete ("/challenges/:id", middleware.checkChallengeOwnership, function(req, res) {
+//     Challenge.findByIdAndRemove (req.params.id, function (err) {
+//         if(err) {
+//             console.log(err);
+//         } else {
+//             req.flash ("info", "your challenge has been deleted");
+//             res.redirect ("/challenges");
+//         }
+//     });
+// });
 
 module.exports = router;

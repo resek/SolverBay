@@ -16,44 +16,47 @@ for (var i = 0; i < challengeDate.length; i++) {
     dateStringArr.push(dateString);
 }
 
-var timer = setInterval(function() {
+for (var i = 0; i < challengeDate.length; i++) {
+    (function(i) {
 
-    for (var i = 0; i < challengeDate.length; i++) {
-
+    setInterval(function() {
+            var currentTime = Date.now();
+            var endTime = new Date(dateStringArr[i]).getTime();
+            var remainingTime = endTime - currentTime;
         
-        var currentTime = Date.now();
-        var endTime = new Date(dateStringArr[i]).getTime();
-        var remainingTime = endTime - currentTime;
-
-        if(remainingTime <= 0) {
-            clearInterval(timer);
-        }
-
-        var sec  = Math.floor (remainingTime / 1000);
-        var min  = Math.floor (sec / 60);
-        var hour = Math.floor (min / 60);  
-        //var day = Math.floor (hour / 24);
-    
-        sec %= 60;
-        min %= 60;
-        //hour %= 24;
-    
-        if(hour<10){
-            hour='0'+hour
-        } 
-        if(min<10){
-            min='0'+min
-        }
-        if(sec<10){
-            sec='0'+sec
-        }
-
-        //spanDay[i].textContent = day;
-        spanHour[i].textContent = hour;
-        spanMin[i].textContent = min;
-        spanSec[i].textContent = sec;  
-    }  
-});
+            if(remainingTime <= 0) {
+                spanHour[i].textContent = "00";
+                spanMin[i].textContent = "00";
+                spanSec[i].textContent = "00";
+                clearInterval(timer);                
+            }
+        
+            var sec  = Math.floor (remainingTime / 1000);
+            var min  = Math.floor (sec / 60);
+            var hour = Math.floor (min / 60);  
+            //var day = Math.floor (hour / 24);
+        
+            sec %= 60;
+            min %= 60;
+            //hour %= 24;
+        
+            if(hour<10){
+                hour='0'+hour
+            } 
+            if(min<10){
+                min='0'+min
+            }
+            if(sec<10){
+                sec='0'+sec
+            }
+        
+            //spanDay[i].textContent = day;
+            spanHour[i].textContent = hour;
+            spanMin[i].textContent = min;
+            spanSec[i].textContent = sec;
+        });    
+    })(i);
+}  
 
 //SET CHALLENGE DATE INPUT MIN ATTRIBUTE
 function tomorrow(){

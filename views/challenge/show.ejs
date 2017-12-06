@@ -15,9 +15,9 @@
     
     <% if(currentUser && foundChallenge.author.id.equals(currentUser._id)) { %>
         <a class="btn btnFull" id="showChallengeEdit" href="/challenges/<%=foundChallenge._id%>/edit">Edit</a>
-        <form method="POST" action="/challenges/<%= foundChallenge._id %>?_method=DELETE">
+        <!-- <form method="POST" action="/challenges/<%= foundChallenge._id %>?_method=DELETE">
             <input type="submit" class="btn btnFull" value="Delete">
-        </form>
+        </form> -->
     <% } %>
 
     <div>
