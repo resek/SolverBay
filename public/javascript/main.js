@@ -19,17 +19,10 @@ for (var i = 0; i < challengeDate.length; i++) {
 for (var i = 0; i < challengeDate.length; i++) {
     (function(i) {
 
-    setInterval(function() {
+        var timer = setInterval(function() {
             var currentTime = Date.now();
             var endTime = new Date(dateStringArr[i]).getTime();
-            var remainingTime = endTime - currentTime;
-        
-            if(remainingTime <= 0) {
-                spanHour[i].textContent = "00";
-                spanMin[i].textContent = "00";
-                spanSec[i].textContent = "00";
-                clearInterval(timer);                
-            }
+            var remainingTime = endTime - currentTime;            
         
             var sec  = Math.floor (remainingTime / 1000);
             var min  = Math.floor (sec / 60);
@@ -54,6 +47,13 @@ for (var i = 0; i < challengeDate.length; i++) {
             spanHour[i].textContent = hour;
             spanMin[i].textContent = min;
             spanSec[i].textContent = sec;
+
+            if(remainingTime <= 0) {
+                spanHour[i].textContent = "00";
+                spanMin[i].textContent = "00";
+                spanSec[i].textContent = "00";
+                clearInterval(timer);                                
+            }
         });    
     })(i);
 }  
