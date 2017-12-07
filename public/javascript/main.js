@@ -3,9 +3,8 @@ var challengeDate = document.querySelectorAll(".challengeDate");
 var spanHour = document.querySelectorAll(".hour");
 var spanMin = document.querySelectorAll(".min");
 var spanSec = document.querySelectorAll(".sec");
+var challengeDateInput = document.getElementById("challengeDateInput");
 
-// tomorrow();
-// sevenDays();
 
 //COUNTDOWN TIMER
 var dateString;
@@ -59,46 +58,52 @@ for (var i = 0; i < challengeDate.length; i++) {
 }  
 
 //SET CHALLENGE DATE INPUT MIN ATTRIBUTE
+tomorrow();
 function tomorrow(){
-    var tomorrow = new Date();
-    var numberOfDaysToAdd = 1;
-    tomorrow.setDate(tomorrow.getDate() + numberOfDaysToAdd); 
+    if (challengeDateInput != null) {
+        var tomorrow = new Date();
+        var numberOfDaysToAdd = 2;
+        tomorrow.setDate(tomorrow.getDate() + numberOfDaysToAdd); 
+        
+        var dd = tomorrow.getDate();
+        var mm = tomorrow.getMonth() + 1;
+        var yyyy = tomorrow.getFullYear();
     
-    var dd = tomorrow.getDate();
-    var mm = tomorrow.getMonth() + 1;
-    var yyyy = tomorrow.getFullYear();
-
-    if(dd<10){
-        dd='0'+dd
-    } 
-    if(mm<10){
-        mm='0'+mm
-    }
+        if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        }
+        
+        var formattedTomorrow = yyyy+'-'+mm+'-'+dd;
     
-    var formattedTomorrow = yyyy+'-'+mm+'-'+dd;
-
-    document.getElementById("challengeDate").setAttribute("min", formattedTomorrow);
+        challengeDateInput.setAttribute("min", formattedTomorrow);
+    }    
 }
 
 //SET CHALLENGE DATE INPUT MAX ATTRIBUTE
+sevenDays();
 function sevenDays(){
-    var sevenDays = new Date();
-    var numberOfDays = 7;
-    sevenDays.setDate(sevenDays.getDate() + numberOfDays); 
+    if (challengeDateInput != null) {
+        var sevenDays = new Date();
+        var numberOfDays = 8;
+        sevenDays.setDate(sevenDays.getDate() + numberOfDays); 
+        
+        var dd = sevenDays.getDate();
+        var mm = sevenDays.getMonth() + 1;
+        var yyyy = sevenDays.getFullYear();
     
-    var dd = sevenDays.getDate();
-    var mm = sevenDays.getMonth() + 1;
-    var yyyy = sevenDays.getFullYear();
-
-    if(dd<10){
-        dd='0'+dd
-    } 
-    if(mm<10){
-        mm='0'+mm
-    }
+        if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        }
+        
+        var formattedSevenDays = yyyy+'-'+mm+'-'+dd;
     
-    var formattedSevenDays = yyyy+'-'+mm+'-'+dd;
-
-    document.getElementById("challengeDate").setAttribute("max", formattedSevenDays);
+        challengeDateInput.setAttribute("max", formattedSevenDays);
+    }    
 }
 
