@@ -4,8 +4,8 @@ var Challenge = require ("../models/challenge");
 var middleware = require ("../middleware");
 
 //index
-router.get("/challenges", function (req, res) {
-    Challenge.find({}, function(err, challenges) {
+router.get("/challenges", function (req, res) { 
+    Challenge.find({}).sort("-date").exec(function(err, challenges) {
         if(err) {
             console.log(err);
         } else {

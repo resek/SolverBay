@@ -9,7 +9,7 @@ var crypto = require ("crypto-browserify");
 
 //HOMEPAGE
 router.get('/', function (req, res) {
-    Challenge.find({}).sort("date").exec(function(err, challenges) {
+    Challenge.find({}).sort("-date").exec(function(err, challenges) {
         if(err) {
             console.log(err);
         } else {
