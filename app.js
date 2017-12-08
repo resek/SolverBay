@@ -23,7 +23,7 @@ app.use(express.static('public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-mongoose.connect("mongodb://donsan:1msolverbay@ds133496.mlab.com:33496/solverbay");
+mongoose.connect("mongodb://donsan:baysolver@ds133496.mlab.com:33496/solverbay");
 app.use(flash());
 app.use(session({
   secret: 'global knowledge',
@@ -85,6 +85,6 @@ app.get('*', function(req, res){
 });
 
 //server config
-app.listen(process.env.PORT, process.env.IP, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('App has started!')
 });
