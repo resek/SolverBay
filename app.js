@@ -23,7 +23,7 @@ app.use(express.static('public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-mongoose.connect("mongodb://donsan:baysolver@ds133496.mlab.com:33496/solverbay");
+mongoose.connect("mongodb://localhost/idea_crowd");
 app.use(flash());
 app.use(session({
   secret: 'global knowledge',
