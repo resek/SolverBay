@@ -5,6 +5,7 @@ var challengeSchema = new mongoose.Schema({
     description: String,
     prize: Number,
     date: String,
+    isPaid: { type: Boolean, default: false },
     solutions: [
         {
             type: mongoose.Schema.Types.ObjectId,

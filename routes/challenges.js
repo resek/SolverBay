@@ -39,6 +39,9 @@ router.get("/challenges/:id", function (req, res) {
     Challenge.findById(id).populate({path: "solutions"}).exec(function(err, foundChallenge) {
         if(err) {
             console.log(err)
+        } else if (foundChallenge.isPaid === false) {
+            req.flash("info", "challenge not paid");
+            res.redirect("/challenges");            
         } else {
             res.render("challenge/show", {foundChallenge: foundChallenge});
         }

@@ -60,7 +60,16 @@
 
         <div class="container">           
             <div class="row">
-                <% for(var i = 0; i < 4; i++) { %>
+                <% var challengesArr = []; %>
+                <% for (var i = 0; i < allChallenges.length; i++) { %>
+                    <% var paid = allChallenges[i].isPaid %>
+                    <% console.log(paid) %>
+                    <% if (paid) { %>
+                        <% challengesArr.push(allChallenges[i]) %>
+                    <% } %>
+                <% } %>
+                <% var challenges = challengesArr.slice(0, 4); %>                    
+                <% for (var i = 0; i < challenges.length; i++) { %>
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="challengesBox">
                             <h3><%= challenges[i].title %></h3>
@@ -79,7 +88,7 @@
                             <a class="btn btnFull" href="/challenges/<%= challenges[i]._id %>">Solve it</a>
                         </div>
                     </div>
-                <% }; %>                                
+                <% } %>
             </div>
         </div>
         
