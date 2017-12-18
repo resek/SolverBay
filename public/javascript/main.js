@@ -1,5 +1,6 @@
 var challengeDate = document.querySelectorAll(".challengeDate");
-//var spanDay = document.querySelectorAll(".day");
+var spanDay = document.querySelectorAll(".day");
+var textDay = document.querySelectorAll(".textDay");
 var spanHour = document.querySelectorAll(".hour");
 var spanMin = document.querySelectorAll(".min");
 var spanSec = document.querySelectorAll(".sec");
@@ -26,11 +27,11 @@ for (var i = 0; i < challengeDate.length; i++) {
             var sec  = Math.floor (remainingTime / 1000);
             var min  = Math.floor (sec / 60);
             var hour = Math.floor (min / 60);  
-            //var day = Math.floor (hour / 24);
+            var day = Math.floor (hour / 24);
         
             sec %= 60;
             min %= 60;
-            //hour %= 24;
+            hour %= 24;
         
             if(hour<10){
                 hour='0'+hour
@@ -41,11 +42,18 @@ for (var i = 0; i < challengeDate.length; i++) {
             if(sec<10){
                 sec='0'+sec
             }
-        
-            //spanDay[i].textContent = day;
-            spanHour[i].textContent = hour;
-            spanMin[i].textContent = min;
-            spanSec[i].textContent = sec;
+            if (remainingTime < 86400000) {
+                spanDay[i].style.display = "none";
+                textDay[i].style.display = "none";
+                spanHour[i].textContent = hour;
+                spanMin[i].textContent = min;
+                spanSec[i].textContent = sec;  
+            } else {
+                spanDay[i].textContent = day;
+                spanHour[i].textContent = hour;
+                spanMin[i].textContent = min;
+                spanSec[i].textContent = sec;
+            }
 
             if(remainingTime <= 0) {
                 spanHour[i].textContent = "00";

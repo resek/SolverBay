@@ -105,7 +105,7 @@ li {
     display: none;
 }
 
-.hour, .sec, .min {
+.hour, .sec, .min, .day {
     font-weight: bold;  
 }
 
@@ -279,7 +279,8 @@ li {
 
 .challengesBox .hour,
 .challengesBox .min,
-.challengesBox .sec {
+.challengesBox .sec,
+.challengesBox .day {
     color: #606060;
 }
 

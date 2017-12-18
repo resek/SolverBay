@@ -63,7 +63,6 @@
                 <% var challengesArr = []; %>
                 <% for (var i = 0; i < allChallenges.length; i++) { %>
                     <% var paid = allChallenges[i].isPaid %>
-                    <% console.log(paid) %>
                     <% if (paid) { %>
                         <% challengesArr.push(allChallenges[i]) %>
                     <% } %>
@@ -78,7 +77,7 @@
                                 <p>PRIZE: <span><%= challenges[i].prize %>€</span></p>
                                 <p class="timer">ENDS:
                                     <div class="challengeDate"><%= challenges[i].date %></div>
-                                    <!-- <span class="day"></span> days -->
+                                    <span class="day"></span><span class="textDay"> days</span>
                                     <span class="hour"></span>h
                                     <span class="min"></span>m
                                     <span class="sec"></span>s
