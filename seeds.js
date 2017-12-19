@@ -55,20 +55,20 @@ var testChallenges = [
 ];
 
 function seedDB() {
-    User.remove({}, function(err) {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log("users removed");
-        }
-    });
-    Token.remove({}, function(err) {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log("tokens removed");
-        }
-    });
+    // User.remove({}, function(err) {
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         console.log("users removed");
+    //     }
+    // });
+    // Token.remove({}, function(err) {
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         console.log("tokens removed");
+    //     }
+    // });
     Challenge.remove({}, function(err) {
         if(err) {
             console.log(err);

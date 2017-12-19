@@ -7,12 +7,14 @@ var bodyParser        = require('body-parser');
 var mongoose          = require('mongoose');
 var flash             = require('connect-flash');
 var expressValidator  = require('express-validator');
+var paypal            = require('paypal-rest-sdk');
 var seedDB            = require("./seeds");
 var app               = express();
 
 var challengeRoutes = require ("./routes/challenges");
 var indexRoutes = require ("./routes/index");
 var solutionRoutes = require ("./routes/solutions");
+var paypalRoutes = require("./routes/paypal");
 var User = require('./models/user');
 
 //seedDB();
@@ -30,6 +32,14 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+
+
+//paypal confing
+paypal.configure({
+  'mode': 'sandbox', //sandbox or live
+  'client_id': 'AWwAX1gww2vujeMHIb8eiDCCgghVek3JEXRYZGkY3HiMJ-bdjqe9AWKhg8Id_M0jMe1NarToX-jxqSSv',
+  'client_secret': 'ELnIWSA4R8IejPsc6hTkIGvDe93CLEnBv_LDW2aIjGcARXiNpsb1f9qYLtXxDuQt3F0eFBaIhF1BLCJZ'
+});
 
 //passportjs config
 app.use(passport.initialize());
@@ -78,6 +88,7 @@ app.use(function(req, res, next) {
 app.use (indexRoutes);
 app.use (challengeRoutes);
 app.use (solutionRoutes);
+app.use (paypalRoutes);
 
 //if route does not exist
 app.get('*', function(req, res){

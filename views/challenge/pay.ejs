@@ -1,0 +1,7 @@
+<h1>Make a payment for <%= foundChallenge.title %></h1>
+
+<form action="/pay" method="post">
+    <input name="id" type="hidden" value="<%= foundChallenge.id %>">
+    <input type="number" value="<%= foundChallenge.prize %>" readonly name="prize">
+    <input type="submit" value="Pay">
+</form>

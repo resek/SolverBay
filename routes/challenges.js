@@ -28,7 +28,8 @@ router.post("/challenges", function(req, res) {
             newChallenge.author.username = req.user.username;
             newChallenge.author.id = req.user._id;
             newChallenge.save();
-            res.redirect ("/challenges");
+            var challengeId = encodeURIComponent(newChallenge._id);
+            res.redirect('/pay?valid=' + challengeId);
         }
     });
 });
