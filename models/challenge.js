@@ -4,6 +4,7 @@ var challengeSchema = new mongoose.Schema({
     title: String,
     description: String,
     prize: Number,
+    currency: String,
     date: String,
     isPaid: { type: Boolean, default: false },
     solutions: [

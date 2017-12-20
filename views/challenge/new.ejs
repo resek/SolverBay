@@ -11,8 +11,12 @@
             <textarea rows="10" name="description" placeholder="Tell your story..." id="challengeDescription" required></textarea>
         </div>
         <div>
-            <label for="challengePrize">Choose you prize in €</label>
+            <label for="challengePrize">Choose you prize in € or $</label>
             <input type="number" name="prize" id="challengePrize" min="10" value="10" required></input>
+            <select name="currency">
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+            </select>
         </div>
         <div>
             <label for="challengeDateInput">Select an end date</label>

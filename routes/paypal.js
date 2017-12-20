@@ -20,6 +20,7 @@ router.post("/pay", function(req, res) {
     
     var prize = req.body.prize;
     var id = req.body.id;
+    var currency = req.body.currency;
 
     var create_payment_json = {
         "intent": "sale",
@@ -36,12 +37,12 @@ router.post("/pay", function(req, res) {
                     "name": "SolverBay challenge prize fee",
                     "sku": "001",
                     "price": prize + ".00",
-                    "currency": "EUR",
+                    "currency": currency,
                     "quantity": 1
                 }]
             },
             "amount": {
-                "currency": "EUR",
+                "currency": currency,
                 "total": prize + ".00",
             },
             "description": "Payment of a challenge prize must be paid in advance."
@@ -56,6 +57,7 @@ router.post("/pay", function(req, res) {
                 if(payment.links[i].rel === "approval_url") {
                     req.session.idNum = id;
                     req.session.prizeNum = prize;
+                    req.session.currencyStr = currency;
                     res.redirect(payment.links[i].href);
                 }
             }
@@ -70,15 +72,17 @@ router.get("/success", function(req, res) {
     var paymentId = req.query.paymentId;
     var prize = req.session.prizeNum;
     var id = req.session.idNum;
+    var currency = req.session.currencyStr;
     
     req.session.prizeNum = null;
     req.session.idNum = null;
+    req.session.currencyStr = null;
     
     var execute_payment_json = {
         "payer_id": payerId,
         "transactions": [{
             "amount": {
-                "currency": "EUR",
+                "currency": currency,
                 "total": prize + ".00"
             }
         }]
