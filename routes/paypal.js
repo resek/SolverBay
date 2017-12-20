@@ -17,8 +17,10 @@ router.get("/pay", function (req, res) {
 
 //post pay with paypal
 router.post("/pay", function(req, res) {
+    
     var prize = req.body.prize;
     var id = req.body.id;
+
     var create_payment_json = {
         "intent": "sale",
         "payer": {
@@ -26,21 +28,21 @@ router.post("/pay", function(req, res) {
         },
         "redirect_urls": {
             "return_url": "http://localhost:3000/success",
-            "cancel_url": "http://localhost:3000/pay?valid="+ id
+            "cancel_url": "http://localhost:3000/"
         },
         "transactions": [{
             "item_list": {
                 "items": [{
                     "name": "SolverBay challenge prize fee",
                     "sku": "001",
-                    "price": "25.00",
+                    "price": prize + ".00",
                     "currency": "EUR",
                     "quantity": 1
                 }]
             },
             "amount": {
                 "currency": "EUR",
-                "total": "25.00",
+                "total": prize + ".00",
             },
             "description": "Payment of a challenge prize must be paid in advance."
         }]
@@ -52,6 +54,8 @@ router.post("/pay", function(req, res) {
         } else {
             for(var i = 0; i < payment.links.length; i++) {
                 if(payment.links[i].rel === "approval_url") {
+                    req.session.idNum = id;
+                    req.session.prizeNum = prize;
                     res.redirect(payment.links[i].href);
                 }
             }
@@ -61,15 +65,21 @@ router.post("/pay", function(req, res) {
 
 //paypal success route
 router.get("/success", function(req, res) {
+    
     var payerId = req.query.PayerID;
     var paymentId = req.query.paymentId;
-
+    var prize = req.session.prizeNum;
+    var id = req.session.idNum;
+    
+    req.session.prizeNum = null;
+    req.session.idNum = null;
+    
     var execute_payment_json = {
         "payer_id": payerId,
         "transactions": [{
             "amount": {
                 "currency": "EUR",
-                "total": "25.00"
+                "total": prize + ".00"
             }
         }]
     };
@@ -81,7 +91,18 @@ router.get("/success", function(req, res) {
         } else {
             console.log("Get Payment Response");
             console.log(JSON.stringify(payment));
-            res.send("success");
+            
+            Challenge.findById(id, function(err, foundChallenge) {
+                foundChallenge.isPaid = true;
+                foundChallenge.save(function(err) {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        req.flash("info", "challenge posted successfully");
+                        res.redirect("/challenges/" + id);
+                    }
+                });                
+            })
         }
     });
 });
