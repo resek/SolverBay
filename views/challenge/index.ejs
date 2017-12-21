@@ -12,7 +12,13 @@
                 <div class="indexChallenges">
                     <h3><%= challenge.title %></h3>
                     <div>
-                        <p class="indexPrize">PRIZE: <b><%= challenge.prize %>€</b></p>
+                        <p class="indexPrize">PRIZE: <b><%= challenge.prize %>
+                            <% if (challenge.currency == "EUR") { %>
+                                €
+                            <% } else { %>
+                                $
+                            <% } %>                      
+                        </b></p>
                         <div class="timer">ENDS:
                             <div class="challengeDate"><%= challenge.date %></div>
                             <span class="day"></span><span class="textDay"> days</span>

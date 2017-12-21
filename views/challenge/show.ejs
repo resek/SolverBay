@@ -2,7 +2,13 @@
 
 <div class="rowCSS showChallenge">
     <h3><%= foundChallenge.title %></h3>
-    <p class="showPrize">PRIZE: <b><%= foundChallenge.prize %>€</b></p>
+    <p class="showPrize">PRIZE: <b><%= foundChallenge.prize %>
+        <% if (foundChallenge.currency == "EUR") { %>
+            €
+        <% } else { %>
+            $
+        <% } %>  
+    </b></p>
     <div class="timer">ENDS:
         <div class="challengeDate"><%= foundChallenge.date %></div>
         <span class="day"></span><span class="textDay"> days</span>
