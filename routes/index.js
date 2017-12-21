@@ -59,7 +59,7 @@ router.post ("/register", function(req, res) {
                     secure: true, 
                     auth: {
                         user: "hello@sloveniafood.com",
-                        pass: "posta1234"
+                        pass: process.env.EMAIL_PASS
                         },
                     tls: { rejectUnauthorized: false }
                 });
@@ -141,7 +141,7 @@ router.post ("/passwordemail", function(req, res) {
                 secure: true, 
                 auth: {
                     user: "hello@sloveniafood.com",
-                    pass: "posta1234"
+                    pass: process.env.EMAIL_PASS
                     },
                 tls: { rejectUnauthorized: false }
             });

@@ -1,6 +1,7 @@
 var express           = require('express');
 var methodOverride    = require('method-override');
 var passport          = require('passport');
+var dotenv            = require('dotenv').config()
 var LocalStrategy     = require('passport-local').Strategy;
 var session           = require('express-session');
 var bodyParser        = require('body-parser');
@@ -28,11 +29,10 @@ app.use(expressValidator());
 mongoose.connect("mongodb://localhost/idea_crowd");
 app.use(flash());
 app.use(session({
-  secret: 'global knowledge',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
-
 
 //paypal confing
 paypal.configure({
