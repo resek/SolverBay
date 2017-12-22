@@ -36,9 +36,9 @@ app.use(session({
 
 //paypal confing
 paypal.configure({
-  'mode': 'sandbox', //sandbox or live
-  'client_id': 'AWwAX1gww2vujeMHIb8eiDCCgghVek3JEXRYZGkY3HiMJ-bdjqe9AWKhg8Id_M0jMe1NarToX-jxqSSv',
-  'client_secret': 'ELnIWSA4R8IejPsc6hTkIGvDe93CLEnBv_LDW2aIjGcARXiNpsb1f9qYLtXxDuQt3F0eFBaIhF1BLCJZ'
+  'mode': 'live',
+  'client_id': process.env.PAYPAL_CLIENT_ID,
+  'client_secret': process.env.PAYPAL_CLIENT_SECRET,
 });
 
 //passportjs config

@@ -34,7 +34,7 @@ router.post("/pay", function(req, res) {
         "transactions": [{
             "item_list": {
                 "items": [{
-                    "name": "SolverBay challenge prize fee",
+                    "name": "Challenge prize fee",
                     "sku": "001",
                     "price": prize + ".00",
                     "currency": currency,
@@ -45,7 +45,7 @@ router.post("/pay", function(req, res) {
                 "currency": currency,
                 "total": prize + ".00",
             },
-            "description": "Payment of a challenge prize must be paid in advance."
+            "description": "Challenge prize fee must be paid in advance."
         }]
     };
 
