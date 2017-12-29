@@ -48,7 +48,7 @@ html, body {
 /* REUSABLE COMPONENTS */
 /* --------------------------- */
 
-h1, h2 {    
+h2 {    
     font-weight: 300;
     text-transform: uppercase;    
         
@@ -60,7 +60,9 @@ h1 {
     color: #fff;
     word-spacing: 6px;
     margin-bottom: 35px;
-    font-size: 240%;
+    font-size: 270%;
+    font-weight: 300;
+    font-style: italic;
 }
 
 h2 {
@@ -162,9 +164,9 @@ li {
 }
 
 .logoWhite { 
-    height: 70px;
+    height: 60px;
     width: auto;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .headerText {
@@ -361,8 +363,8 @@ li {
 
 .logoBlack {
     margin-left: 25px;
-    height: 50px;
-    margin-top: 10px;
+    height: 40px;
+    margin-top: 15px;
 }
 
 .flashMessages {

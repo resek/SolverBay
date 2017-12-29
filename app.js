@@ -18,7 +18,7 @@ var solutionRoutes = require ("./routes/solutions");
 var paypalRoutes = require("./routes/paypal");
 var User = require('./models/user');
 
-//seedDB();
+seedDB();
 
 //app config
 app.use(methodOverride('_method'));
@@ -26,7 +26,7 @@ app.use(express.static('public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-mongoose.connect("mongodb://localhost/idea_crowd");
+mongoose.connect(process.env.MLAB_MONGODB);
 app.use(flash());
 app.use(session({
   secret: process.env.SESSION_SECRET,
