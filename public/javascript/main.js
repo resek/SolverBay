@@ -95,7 +95,7 @@ sevenDays();
 function sevenDays(){
     if (challengeDateInput != null) {
         var sevenDays = new Date();
-        var numberOfDays = 8;
+        var numberOfDays = 30;
         sevenDays.setDate(sevenDays.getDate() + numberOfDays); 
         
         var dd = sevenDays.getDate();

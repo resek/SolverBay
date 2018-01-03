@@ -62,7 +62,6 @@ h1 {
     margin-bottom: 35px;
     font-size: 270%;
     font-weight: 300;
-    font-style: italic;
 }
 
 h2 {
@@ -95,6 +94,17 @@ ul {
 
 li {
     display: inline-block;
+}
+
+input {
+    display: block;    
+}
+
+label {
+    font-size: 120%;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display:block;
 }
 
 .author {
@@ -164,9 +174,9 @@ li {
 }
 
 .logoWhite { 
-    height: 60px;
+    height: 55px;
     width: auto;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .headerText {
@@ -584,6 +594,73 @@ footer .col-sm-6 {
 }
 
 /* ------------------------------- */
+/* VIEWS > CHALLENGES > NEW.EJS */
+/* ------------------------------- */
+
+.newChallenge {
+    margin-top: 50px;
+}
+
+.newChallenge form {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.newChallenge input[type=text],
+.newChallenge input[type=number],
+.newChallenge input[type=date],
+.newChallenge select,
+.newChallenge textarea {
+    margin-bottom: 60px;
+    padding: 10px;
+    border-radius: 7px;
+    border: 2px solid #3498db;
+    outline: none;
+    font-size: 90%;
+    color: #606060;
+}
+
+.newChallenge input:focus,
+.newChallenge textarea:focus {
+    border-color: #aa1212;
+}
+
+.newChallenge input[type=number],
+.newChallenge select {
+    margin-bottom: 10px;
+}
+
+.newChallenge input[type=submit] {
+    margin-bottom: 50px;
+}
+
+.newChallenge img {
+    display: block;
+    margin-bottom: 50px;
+}
+
+.challengeExplanations {
+    font-weight: 400;
+    font-size: 80%;
+    color: #8e8e8e
+}
+
+#challengeTitle,
+#challengeDescription,
+#challengeField {
+    width: 100%;
+}
+
+#challengePrize {
+    width: 100px;
+    display: inline-block;
+}
+
+::placeholder { 
+    color: #8e8e8e;
+ }
+
+/* ------------------------------- */
 /*    VIEWS > LOGIN / REGISTER */
 /* ------------------------------- */
 
@@ -602,7 +679,7 @@ footer .col-sm-6 {
 .loginRegisterForm input[type=password] {
     margin-bottom: 12px;
     width: 100%;
-    padding: 7px;
+    padding: 10px;
     border-radius: 7px;
     border: 2px solid #333;
     outline: none;

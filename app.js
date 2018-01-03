@@ -18,7 +18,7 @@ var solutionRoutes = require ("./routes/solutions");
 var paypalRoutes = require("./routes/paypal");
 var User = require('./models/user');
 
-seedDB();
+//seedDB();
 
 //app config
 app.use(methodOverride('_method'));
