@@ -606,12 +606,15 @@ footer .col-sm-6 {
     margin: 0 auto;
 }
 
+.newChallenge div {
+    margin-bottom: 60px;
+}
+
 .newChallenge input[type=text],
 .newChallenge input[type=number],
 .newChallenge input[type=date],
 .newChallenge select,
 .newChallenge textarea {
-    margin-bottom: 60px;
     padding: 10px;
     border-radius: 7px;
     border: 2px solid #3498db;
@@ -621,7 +624,8 @@ footer .col-sm-6 {
 }
 
 .newChallenge input:focus,
-.newChallenge textarea:focus {
+.newChallenge textarea:focus,
+.newChallenge select:focus {
     border-color: #aa1212;
 }
 
@@ -630,13 +634,8 @@ footer .col-sm-6 {
     margin-bottom: 10px;
 }
 
-.newChallenge input[type=submit] {
-    margin-bottom: 50px;
-}
-
 .newChallenge img {
     display: block;
-    margin-bottom: 50px;
 }
 
 .challengeExplanations {

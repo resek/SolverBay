@@ -34,7 +34,7 @@ app.use(session({
   saveUninitialized: false
 }));
 
-//paypal confing
+//paypal config
 paypal.configure({
   'mode': 'live',
   'client_id': process.env.PAYPAL_CLIENT_ID,
