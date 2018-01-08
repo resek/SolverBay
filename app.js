@@ -15,6 +15,7 @@ var app               = express();
 var challengeRoutes = require ("./routes/challenges");
 var indexRoutes = require ("./routes/index");
 var solutionRoutes = require ("./routes/solutions");
+var uploadRoutes = require ("./routes/upload");
 var paypalRoutes = require("./routes/paypal");
 var User = require('./models/user');
 
@@ -89,6 +90,7 @@ app.use (indexRoutes);
 app.use (challengeRoutes);
 app.use (solutionRoutes);
 app.use (paypalRoutes);
+app.use (uploadRoutes);
 
 //if route does not exist
 app.get('*', function(req, res){

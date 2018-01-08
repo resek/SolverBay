@@ -37,7 +37,9 @@
 
     <%= typeof msg != 'undefined' ? msg : '' %>
     <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input name="files" type="file">
+        <input name="file1" type="file">
+        <input name="file2" type="file">
+        <input name="file3" type="file">
         <input type="submit" value="Upload">
     </form>
     

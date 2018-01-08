@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 var Challenge = require ("../models/challenge");
 var middleware = require ("../middleware");
-var multer = require('multer');
-var path = require('path');
 
 //index
 router.get("/challenges", function (req, res) { 
@@ -22,7 +20,7 @@ router.get("/challenges/new", middleware.isLoggedIn, function(req, res) {
 });
   
 //create
-router.post("/challenges", function(req, res) {
+router.post("/challenges", middleware.isLoggedIn, function(req, res) {
     Challenge.create(req.body, function(err, newChallenge) {
         if(err) {
             console.log(err);
@@ -88,52 +86,5 @@ router.put ("/challenges/:id", middleware.checkChallengeOwnership, function (req
 //         }
 //     });
 // });
-
-//upload files with multer
-//STORAGE ENGINE 
-var storage = multer.diskStorage({ 
-    destination: './public/uploads/',
-    filename: function(req, file, cb){
-      cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
-
-//INIT UPLOAD
-  var upload = multer({
-    storage: storage,
-    limits:{fileSize: 1000000},
-    fileFilter: function(req, file, cb){
-        checkFileType(file, cb);
-      }
-  }).single('files');
-
-//CHECK FILE TYPE
-function checkFileType(file, cb){
-    // Allowed extensions
-    var filetypes = /jpeg|jpg|pdf|txt|docx|xlsx|png|gif/;
-    // Check extensions
-    var extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-    // Check mime
-    var mimetype = filetypes.test(file.mimetype);
-
-    if(mimetype && extname){
-    return cb(null,true);
-    } else {
-    cb('Error: File type not allowed');
-    }
-} 
-
-//UPLOAD ROUTE
-router.post ("/upload", function(req, res) {
-    upload(req, res, (err) => {
-        if(err) {
-            res.render('challenge/new', {msg: err});
-        } else if (req.file == undefined) {
-            res.render('challenge/new', { msg: 'Error: No file selected' });            
-        } else {
-            res.render('challenge/new', { msg: 'File uploaded' });
-        }
-    });
-});
 
 module.exports = router;
