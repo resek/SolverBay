@@ -5,7 +5,10 @@ var spanHour = document.querySelectorAll(".hour");
 var spanMin = document.querySelectorAll(".min");
 var spanSec = document.querySelectorAll(".sec");
 var challengeDateInput = document.getElementById("challengeDateInput");
-
+var uploadForm = document.getElementById("uploadForm");
+var uploadInfo = document.querySelector(".uploadInfo");
+var fileUploadInput = document.querySelector("#fileUploadInput");
+var uploadDiv = document.querySelector(".uploadDiv");
 
 //COUNTDOWN TIMER
 var dateString;
@@ -115,3 +118,41 @@ function sevenDays(){
     }    
 }
 
+//UPLOAD FILES AJAX
+if (uploadForm) {
+    uploadForm.addEventListener("submit", burek, false);
+}
+
+var arr = [];
+
+function burek(e) {
+    e.preventDefault();
+    
+    if (arr.length < 3) {
+        
+        var data = new FormData(uploadForm); 
+        var xhr = new XMLHttpRequest();    
+        var name;
+
+        xhr.open("POST", "/upload", true);
+        xhr.onload = function () {
+            
+            responseObject = JSON.parse(xhr.response);
+            
+            if (typeof(responseObject) == "string") {
+                uploadInfo.textContent = responseObject;
+                fileUploadInput.value = "";
+            } else {
+                uploadInfo.textContent = "File uploaded";
+                fileUploadInput.value = "";
+                name = responseObject.originalname;
+                arr.push(name);
+                console.log(arr);
+                //arr.forEach(function(oneFile) {
+            }            
+        }   
+        xhr.send(data);
+    }  else {
+        uploadInfo.textContent = "You can upload only 3 files";
+    }  
+}

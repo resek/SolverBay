@@ -3,6 +3,7 @@ var router = express.Router();
 var multer = require('multer');
 var path = require('path');
 var middleware = require ("../middleware");
+var mime = require('mime-types');
 
 
 //STORAGE ENGINE 
@@ -16,39 +17,38 @@ var storage = multer.diskStorage({
 //INIT UPLOAD
 var upload = multer({
     storage: storage,
-    limits:{fileSize: 2000000},
+    limits:{fileSize: 1000000},
     fileFilter: function(req, file, cb) {
         checkFileType(file, cb);
     }
-})
+}).single("uploadedFile");
 
-var cpUpload = upload.fields([{ name: 'file1', maxCount: 1 }, { name: 'file2', maxCount: 1 }, { name: 'file3', maxCount: 1 }])
 
 //CHECK FILE TYPE
 function checkFileType(file, cb){
     // Allowed extensions
-    var filetypes = /jpeg|jpg|pdf|txt|docx|xlsx|png|gif/;
+    var filetypes = /jpeg|jpg|pdf|txt|png|/;
     // Check extensions
     var extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-    // Check mime
-    var mimetype = filetypes.test(file.mimetype);
-
-    if(mimetype && extname){
-    return cb(null,true);
+    // Check mimetype
+    var mimetypeVar = (mime.lookup(file.originalname) == file.mimetype);
+    
+    if(extname && mimetypeVar){
+    return cb(null, true);
     } else {
-    cb('Error: File type not allowed');
+    cb("File type/size not allowed");
     }
 } 
 
 //UPLOAD ROUTE
 router.post ("/upload", middleware.isLoggedIn, function(req, res) {
-    cpUpload(req, res, function (err) {
+    upload(req, res, function (err) {
         if(err) {
-            res.render('challenge/new', {msg: err});
-        } else if (Object.keys(req.files).length < 1) {
-            res.render('challenge/new', { msg: 'Error: No file selected' });            
+            res.json("File type/size not allowed");
+        } else if (req.file == undefined) {
+            res.json("No file selected");                    
         } else {
-            res.render('challenge/new', { msg: 'File(s) uploaded' });
+            res.json(req.file);
         }
     });
 });

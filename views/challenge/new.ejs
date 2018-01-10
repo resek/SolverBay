@@ -1,6 +1,15 @@
 <% include ../partials/header %>
 
 <div class ="rowCSS newChallenge">
+    
+    <div class="uploadDiv">
+        <p class="uploadInfo"></p>
+        <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadForm">        
+            <input name="uploadedFile" type="file" id="fileUploadInput">
+            <input type="submit" value="Upload">
+        </form> 
+    </div>    
+
     <form id="newForm" action="/challenges" method="POST">
         <div>
             <label for="challengeTitle">Title</label>
@@ -13,7 +22,7 @@
         <div>
             <label for="challengeDescription">Description<span class="challengeExplanations"> (max 1200 characters)</span></label>
             <textarea rows="12" name="description" placeholder="Describe your challenge and what are you trying to achive. Better instructions, better solutions..." id="challengeDescription" maxlength="1200" required></textarea>
-        </div>
+        </div>    
         <div>
             <label for="challengeDateInput">Finish date<span class="challengeExplanations"> (max 30 days)</span></label>           
             <input type="date" name="date" id="challengeDateInput" min='2000-13-13' max='2000-13-13' required></input>
@@ -33,14 +42,6 @@
         <div>
             <p class="challengeExplanations">*When challenge is confirmed, you can still edit it, until first solution is posted.</p>
         </div>
-    </form>
-
-    <%= typeof msg != 'undefined' ? msg : '' %>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input name="file1" type="file">
-        <input name="file2" type="file">
-        <input name="file3" type="file">
-        <input type="submit" value="Upload">
     </form>
     
 </div>
