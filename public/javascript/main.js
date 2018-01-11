@@ -8,7 +8,7 @@ var challengeDateInput = document.getElementById("challengeDateInput");
 var uploadForm = document.getElementById("uploadForm");
 var uploadInfo = document.querySelector(".uploadInfo");
 var fileUploadInput = document.querySelector("#fileUploadInput");
-var uploadDiv = document.querySelector(".uploadDiv");
+var filesList = document.querySelector(".filesList");
 
 //COUNTDOWN TIMER
 var dateString;
@@ -118,14 +118,14 @@ function sevenDays(){
     }    
 }
 
-//UPLOAD FILES AJAX
+//UPLOAD FILES - AJAX
 if (uploadForm) {
-    uploadForm.addEventListener("submit", burek, false);
+    uploadForm.addEventListener("submit", uploadFiles, false);
 }
 
 var arr = [];
 
-function burek(e) {
+function uploadFiles(e) {
     e.preventDefault();
     
     if (arr.length < 3) {
@@ -133,8 +133,10 @@ function burek(e) {
         var data = new FormData(uploadForm); 
         var xhr = new XMLHttpRequest();    
         var name;
+        var newElement;
 
         xhr.open("POST", "/upload", true);
+        xhr.send(data);
         xhr.onload = function () {
             
             responseObject = JSON.parse(xhr.response);
@@ -147,12 +149,15 @@ function burek(e) {
                 fileUploadInput.value = "";
                 name = responseObject.originalname;
                 arr.push(name);
-                console.log(arr);
-                //arr.forEach(function(oneFile) {
+                newElement = document.createElement("li");
+                arr.forEach(function(file) {
+                    newElement.textContent = file.substring(0, 35);
+                    filesList.appendChild(newElement);
+                });
             }            
-        }   
-        xhr.send(data);
+        }  
     }  else {
-        uploadInfo.textContent = "You can upload only 3 files";
+        uploadInfo.textContent = "You can upload max 3 files";
+        fileUploadInput.value = "";
     }  
 }

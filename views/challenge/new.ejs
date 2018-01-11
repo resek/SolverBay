@@ -1,13 +1,16 @@
 <% include ../partials/header %>
 
-<div class ="rowCSS newChallenge">
+<div class ="rowCSS newChallenge">    
     
     <div class="uploadDiv">
-        <p class="uploadInfo"></p>
-        <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadForm">        
-            <input name="uploadedFile" type="file" id="fileUploadInput">
-            <input type="submit" value="Upload">
-        </form> 
+        <label>Upload files if needed<span class="challengeExplanations"> (<b>max:</b> 2MB/file &amp; 3 files; <b>types:</b> txt, pdf, png, jpg, jpeg)</span></label>
+        <div class="uploadBox">            
+            <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadForm">       
+                <input type="submit" value="Upload"><span class="uploadInfo"></span>
+                <input name="uploadedFile" type="file" id="fileUploadInput">
+            </form>
+            <ul class="filesList"></ul> 
+        </div>        
     </div>    
 
     <form id="newForm" action="/challenges" method="POST">

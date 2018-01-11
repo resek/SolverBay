@@ -623,7 +623,9 @@ footer .col-sm-6 {
     color: #606060;
 }
 
-.newChallenge input:focus,
+.newChallenge input:focus[type=text],
+.newChallenge input:focus[type=number],
+.newChallenge input:focus[type=date],
 .newChallenge textarea:focus,
 .newChallenge select:focus {
     border-color: #aa1212;
@@ -658,6 +660,49 @@ footer .col-sm-6 {
 ::placeholder { 
     color: #8e8e8e;
  }
+
+.uploadDiv {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.uploadDiv label {
+    margin-top: 70px;
+}   
+
+.uploadDiv input {
+    font-size: 80%;
+}
+
+.uploadBox {
+    border-radius: 7px;
+    border: 2px solid #3498db;
+    padding: 30px 30px;
+    position: relative;
+}
+
+.uploadBox input[type=submit] {
+    margin-bottom: 15px;
+}
+
+ .uploadBox ul {
+     position: absolute;
+     top: 30px;;
+     left: 400px;
+ }
+
+ .uploadBox li {
+     display: block;
+     font-size: 90%;
+     color: rgb(22, 177, 61);
+     margin-bottom: 7px;
+ }
+
+ .uploadInfo {
+    font-size: 90%;
+    color: #aa1212; 
+ }
+
 
 /* ------------------------------- */
 /*    VIEWS > LOGIN / REGISTER */
