@@ -1,15 +1,27 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
+var aws = require('aws-sdk');
+var multerS3 = require('multer-s3')
 var path = require('path');
 var middleware = require ("../middleware");
 var mime = require('mime-types');
 
+var s3 = new aws.S3();
+
+aws.config.update({
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    region: 'eu-central-1',
+    signatureVersion: 'v4'
+});
 
 //STORAGE ENGINE 
-var storage = multer.diskStorage({ 
-    destination: './public/uploads/',
-    filename: function(req, file, cb){
+var storage = multerS3({ 
+    s3: s3,
+    bucket: "solverbay",
+    key: function(req, file, cb){
+        console.log(file);
         cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
@@ -17,7 +29,7 @@ var storage = multer.diskStorage({
 //INIT UPLOAD
 var upload = multer({
     storage: storage,
-    limits:{fileSize: 1000000},
+    limits:{fileSize: 2000000},
     fileFilter: function(req, file, cb) {
         checkFileType(file, cb);
     }
