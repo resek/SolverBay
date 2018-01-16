@@ -21,7 +21,6 @@ var storage = multerS3({
     s3: s3,
     bucket: "solverbay",
     key: function(req, file, cb){
-        console.log(file);
         cb(null, Date.now() + "-" + file.originalname);
     }
 });

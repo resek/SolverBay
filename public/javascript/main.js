@@ -9,6 +9,8 @@ var uploadForm = document.getElementById("uploadForm");
 var uploadInfo = document.querySelector(".uploadInfo");
 var fileUploadInput = document.querySelector("#fileUploadInput");
 var filesList = document.querySelector(".filesList");
+var hiddenInputsDiv = document.querySelector("#hiddenInputsDiv");
+
 
 //COUNTDOWN TIMER
 var dateString;
@@ -133,30 +135,52 @@ function uploadFiles(e) {
         var data = new FormData(uploadForm); 
         var xhr = new XMLHttpRequest();    
         var name;
-        var newElement;
+        var newLi;
+        var newInput;
 
         xhr.open("POST", "/upload", true);
         xhr.send(data);
-        xhr.onload = function () {
+
+        xhr.onload = function () {        
             
             responseObject = JSON.parse(xhr.response);
             
             if (typeof(responseObject) == "string") {
                 uploadInfo.textContent = responseObject;
                 fileUploadInput.value = "";
-            } else {
+            } 
+            
+            else {
                 uploadInfo.textContent = "File uploaded";
                 fileUploadInput.value = "";
-                name = responseObject.originalname;
-                arr.push(name);
-                newElement = document.createElement("li");
-                arr.forEach(function(file) {
-                    newElement.textContent = file.substring(0, 35);
-                    filesList.appendChild(newElement);
-                });
+                
+                if (hiddenInputsDiv.childNodes.length == 2) { 
+                    hiddenInputsDiv.removeChild(hiddenInputsDiv.childNodes[1]);
+                } 
+                if (hiddenInputsDiv.childNodes.length == 3) {
+                    hiddenInputsDiv.removeChild(hiddenInputsDiv.childNodes[1]);
+                    hiddenInputsDiv.removeChild(hiddenInputsDiv.childNodes[1]);
+                }                
+
+                arr.push(responseObject);
+                newLi = document.createElement("li");
+                
+                for (var i = 0; i < arr.length; i++) {
+                   
+                    newLi.textContent = arr[i].originalname.substring(0, 35);
+                    filesList.appendChild(newLi);
+                    
+                    newInput = document.createElement("input");
+                    hiddenInputsDiv.appendChild(newInput);
+                    newInput.setAttribute("type", "hidden");
+                    newInput.setAttribute("name", "files");
+                    newInput.setAttribute("value", arr[i].key);     
+                }                                    
             }            
         }  
-    }  else {
+    }  
+    
+    else {
         uploadInfo.textContent = "You can upload max 3 files";
         fileUploadInput.value = "";
     }  

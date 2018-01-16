@@ -8,6 +8,7 @@ var challengeSchema = new mongoose.Schema({
     currency: String,
     date: String,
     isPaid: { type: Boolean, default: false },
+    files: Array,
     solutions: [
         {
             type: mongoose.Schema.Types.ObjectId,
