@@ -9,6 +9,8 @@ var mime = require('mime-types');
 
 var s3 = new aws.S3();
 
+
+//AWS CONFIG
 aws.config.update({
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -63,5 +65,25 @@ router.post ("/upload", middleware.isLoggedIn, function(req, res) {
         }
     });
 });
+
+//DOWNLOAD ROUTE
+// router.get("/download/:file", function(req, res) {
+//     console.log(req.params.file);
+//     var burek;
+//     var params = {
+//         Bucket: "solverbay", 
+//         Key: req.params.file
+//     };
+    
+//     s3.getObject(params, function(err, data) {
+//         if (err) {
+//             console.log(err, err.stack);
+//         } else {
+//             burek = data.Body.toString('utf-8');
+//             console.log(burek);
+//         }
+//     });
+//     res.download(burek);
+// });
 
 module.exports = router;

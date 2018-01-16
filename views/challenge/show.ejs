@@ -17,6 +17,12 @@
         <span class="sec"></span>s
     </div>
     <p><%= foundChallenge.description %></p>
+    <ul>
+        Files to donwload:
+        <% foundChallenge.files.forEach(function(file) { %>
+            <li><a href="/download/<%= file %>"><%= file.substring(14, 50) %></a></li>
+        <% }); %>
+    </ul>
     <p class="author">posted by <%= foundChallenge.author.username %></p>
     
     <% if(currentUser && foundChallenge.author.id.equals(currentUser._id)) { %>

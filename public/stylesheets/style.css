@@ -544,6 +544,17 @@ footer .col-sm-6 {
     border: 2px solid #7f0707;
 }
 
+.showChallenge ul {
+    margin: 20px 0;
+    font-size: 90%;
+}
+
+.showChallenge li {
+    display: block;
+    margin: 5px 0;
+    font-size: 80%;
+}
+
 .showSolutions {
     background-color: #efefef;
     padding: 30px 0;
