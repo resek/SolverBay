@@ -6,9 +6,9 @@ var multerS3 = require('multer-s3')
 var path = require('path');
 var middleware = require ("../middleware");
 var mime = require('mime-types');
+var fs = require("fs");
 
 var s3 = new aws.S3();
-
 
 //AWS CONFIG
 aws.config.update({
@@ -67,23 +67,16 @@ router.post ("/upload", middleware.isLoggedIn, function(req, res) {
 });
 
 //DOWNLOAD ROUTE
-// router.get("/download/:file", function(req, res) {
-//     console.log(req.params.file);
-//     var burek;
-//     var params = {
-//         Bucket: "solverbay", 
-//         Key: req.params.file
-//     };
-    
-//     s3.getObject(params, function(err, data) {
-//         if (err) {
-//             console.log(err, err.stack);
-//         } else {
-//             burek = data.Body.toString('utf-8');
-//             console.log(burek);
-//         }
-//     });
-//     res.download(burek);
-// });
+router.get("/download/:file", function(req, res) {
+
+    var params = {
+        Bucket: "solverbay", 
+        Key: req.params.file
+    };
+
+    var fileStream = s3.getObject(params).createReadStream();    
+    fileStream.pipe(res);
+    res.attachment(req.params.file.substring(14));
+});
 
 module.exports = router;
