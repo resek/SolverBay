@@ -1,10 +1,24 @@
-<h1>Make a payment for <%= foundChallenge.title %></h1>
+<% include ../partials/header %>
 
-<h2><%= foundChallenge.prize %> <%= foundChallenge.currency %></h2>
+<div class ="rowCSS">
+    <div class="paymentBox">
+        <p><b>Payment for:</b> <%= foundChallenge.title %></p>
 
-<form action="/pay" method="post">
-    <input name="id" type="hidden" value="<%= foundChallenge.id %>">
-    <input type="hidden" value="<%= foundChallenge.prize %>" name="prize">
-    <input type="hidden" value="<%= foundChallenge.currency %>" name="currency">
-    <input type="submit" value="Pay">
-</form>
+        <h3><%= foundChallenge.prize %> <%= foundChallenge.currency %></h3>
+    
+        <form action="/pay" method="post">
+            <input name="id" type="hidden" value="<%= foundChallenge.id %>">
+            <input type="hidden" value="<%= foundChallenge.prize %>" name="prize">
+            <input type="hidden" value="<%= foundChallenge.currency %>" name="currency">
+            <input type="submit" value="Go to PayPal">
+            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Credit Card Badges">
+        </form>   
+    </div>
+
+    <p class="challengeExplanations PayPalExplanation">*PayPal is one of the biggest and most secure online payment system. 
+        We do not store any of your vulnerable payment information. You can pay with 
+        PayPal account or with PayPal accepted credit cards ("Pay with a Bank Account or Credit Card")</p>
+    
+</div>
+
+<% include ../partials/footer %>
