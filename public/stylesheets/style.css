@@ -474,8 +474,8 @@ footer .col-sm-6 {
     padding: 40px 0;
 }
 .indexChallenges {
-    width: 100%;
-    margin: 20px 0;
+    width: 70%;
+    margin: 20px auto;
     border-radius: 7px;
     -webkit-box-shadow: 0 2px 2px #aeaeaf;
             box-shadow: 0 2px 2px #aeaeaf;
@@ -490,11 +490,11 @@ footer .col-sm-6 {
 
 .indexChallenges h3 {
     font-size: 120%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .indexChallenges div {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .indexPrize {
@@ -504,6 +504,11 @@ footer .col-sm-6 {
 
 .indexDate {
     display: inline-block;
+}
+
+.indexDescription {
+    font-size: 90%;
+    line-height: 135%;
 }
 
 /* ------------------------------- */
@@ -520,10 +525,10 @@ footer .col-sm-6 {
 
 .showPrize, .timer {
     display: inline-block;
-    margin: 0 30px 30px 0;
+    margin-right: 30px;
 }
 
-.showChallenge div {
+.showChallenge div:last-child {
     margin: 50px 0;
     text-align: center;
 }
@@ -545,19 +550,39 @@ footer .col-sm-6 {
 }
 
 .showChallenge ul {
-    margin: 20px 0;
-    font-size: 90%;
+    font-size: 80%;
 }
 
 .showChallenge li {
     display: block;
     margin: 5px 0;
-    font-size: 80%;
 }
+
+.showChallenge li a:link,
+.showChallenge li a:visited {
+    color: #3498db;
+    transition: color 0.3s;
+}
+
+.showChallenge li a:hover,
+.showChallenge li a:active {
+    color: #196090;
+}
+
 
 .showSolutions {
     background-color: #efefef;
     padding: 30px 0;
+}
+
+.descriptionBox {
+    padding: 15px;
+    border-radius: 7px;
+    border: 2px solid #3498db;
+    margin: 35 auto;
+    font-size: 90%;
+    line-height: 135%;
+    width: 70%;
 }
 
 .solutionBox {
@@ -605,7 +630,7 @@ footer .col-sm-6 {
 }
 
 /* ------------------------------- */
-/* VIEWS > CHALLENGES > NEW.EJS */
+/* VIEWS > CHALLENGES > NEW.EJS / EDIT.EJS */
 /* ------------------------------- */
 
 .newChallenge {
@@ -657,13 +682,13 @@ footer .col-sm-6 {
     color: #8e8e8e
 }
 
-#challengeTitle,
-#challengeDescription,
-#challengeField {
+.challengeTitle,
+.challengeDescription,
+.challengeField {
     width: 100%;
 }
 
-#challengePrize {
+.challengePrize {
     width: 100px;
     display: inline-block;
 }

@@ -4,13 +4,12 @@ var textDay = document.querySelectorAll(".textDay");
 var spanHour = document.querySelectorAll(".hour");
 var spanMin = document.querySelectorAll(".min");
 var spanSec = document.querySelectorAll(".sec");
-var challengeDateInput = document.getElementById("challengeDateInput");
+var challengeDateInput = document.querySelector(".challengeDateInput");
 var uploadForm = document.getElementById("uploadForm");
 var uploadInfo = document.querySelector(".uploadInfo");
 var fileUploadInput = document.querySelector("#fileUploadInput");
 var filesList = document.querySelector(".filesList");
 var hiddenInputsDiv = document.querySelector("#hiddenInputsDiv");
-
 
 //COUNTDOWN TIMER
 var dateString;

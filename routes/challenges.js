@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Challenge = require ("../models/challenge");
 var middleware = require ("../middleware");
+var sanitizeHtml = require('sanitize-html');
 
 //index
 router.get("/challenges", function (req, res) { 
@@ -21,7 +22,17 @@ router.get("/challenges/new", middleware.isLoggedIn, function(req, res) {
   
 //create
 router.post("/challenges", middleware.isLoggedIn, function(req, res) {
-    Challenge.create(req.body, function(err, newChallenge) {
+    
+    var cleanDescription = sanitizeHtml(req.body.description);
+    var updatedData = { title: req.body.title, 
+                        field: req.body.field, 
+                        description: cleanDescription, 
+                        date: req.body.date, 
+                        prize: req.body.prize,
+                        currency: req.body.currency,
+                        files: req.body.files };
+
+    Challenge.create(updatedData, function(err, newChallenge) {
         if(err) {
             console.log(err);
         } else {
@@ -64,8 +75,10 @@ router.get ("/challenges/:id/edit", middleware.checkChallengeOwnership, function
 });
 
 //update
-router.put ("/challenges/:id", middleware.checkChallengeOwnership, function (req, res) {
-    Challenge.findByIdAndUpdate(req.params.id, req.body, function (err) {
+router.put ("/challenges/:id", middleware.checkChallengeOwnership, function (req, res) {    
+    var cleanDescription = sanitizeHtml(req.body.description);
+    var updatedData = { title: req.body.title, field: req.body.field, description: cleanDescription, date: req.body.date};  
+    Challenge.findByIdAndUpdate(req.params.id, updatedData, function (err) {
         if(err) {
             console.log(err); 
         } else {

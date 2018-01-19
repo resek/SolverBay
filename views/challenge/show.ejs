@@ -1,7 +1,9 @@
 <% include ../partials/header %>
 
 <div class="rowCSS showChallenge">
+    
     <h3><%= foundChallenge.title %></h3>
+    
     <p class="showPrize">PRIZE: <b><%= foundChallenge.prize %>
         <% if (foundChallenge.currency == "EUR") { %>
             €
@@ -9,6 +11,7 @@
             $
         <% } %>  
     </b></p>
+    
     <div class="timer">ENDS:
         <div class="challengeDate"><%= foundChallenge.date %></div>
         <span class="day"></span><span class="textDay"> days</span>
@@ -16,14 +19,21 @@
         <span class="min"></span>m
         <span class="sec"></span>s
     </div>
-    <p><%= foundChallenge.description %></p>
-    <ul>
-        Files to donwload:
-        <% foundChallenge.files.forEach(function(file) { %>
-            <li><a href="/download/<%= file %>"><%= file.substring(14, 50) %></a></li>
-        <% }); %>
-    </ul>
-    <p class="author">posted by <%= foundChallenge.author.username %></p>
+
+    <p class="author">challenged by <%= foundChallenge.author.username %></p> 
+
+    <div class="descriptionBox">
+        <p><%- foundChallenge.description.replace(/(?:\r\n|\r|\n)/g, '<br />') %></p>
+    </div>    
+
+    <% if (foundChallenge.files.length > 0) { %>
+        <ul>
+            <b>Files to download:</b> 
+            <% foundChallenge.files.forEach(function(file) { %>
+                <li><a href="/download/<%= file %>"><%= file.substring(14, 50) %></a></li>
+            <% }); %>
+        </ul>
+    <% } %>    
     
     <% if(currentUser && foundChallenge.author.id.equals(currentUser._id)) { %>
         <a class="btn btnFull" id="showChallengeEdit" href="/challenges/<%=foundChallenge._id%>/edit">Edit</a>

@@ -13,30 +13,30 @@
         </div>        
     </div>    
 
-    <form id="newForm" action="/challenges" method="POST">
+    <form action="/challenges" method="POST">
         
         <div id="hiddenInputsDiv">
         </div>
         
         <div>
             <label for="challengeTitle">Title</label>
-            <input type="text" name="title" placeholder="Type challenge title..." id="challengeTitle" maxlength="62" required></input>
+            <input type="text" name="title" placeholder="Type challenge title..." class="challengeTitle" maxlength="62" required></input>
         </div>
         <div>
             <label for="challengeField">Challenge field</label>
-            <input type="text" name="field" placeholder="e.g. thermal engineering" id="challengeField" maxlength="62" required></input>
+            <input type="text" name="field" placeholder="e.g. thermal engineering" class="challengeField" maxlength="62" required></input>
         </div>
         <div>
             <label for="challengeDescription">Description<span class="challengeExplanations"> (max 1200 characters)</span></label>
-            <textarea rows="12" name="description" placeholder="Describe your challenge and what are you trying to achive. Better instructions, better solutions..." id="challengeDescription" maxlength="1200" required></textarea>
+            <textarea rows="12" name="description" placeholder="Describe your challenge and what are you trying to achive. Better instructions, better solutions..." class="challengeDescription" maxlength="1200" required></textarea>
         </div>    
         <div>
             <label for="challengeDateInput">Finish date<span class="challengeExplanations"> (max 30 days)</span></label>           
-            <input type="date" name="date" id="challengeDateInput" min='2000-13-13' max='2000-13-13' required></input>
+            <input type="date" name="date" class="challengeDateInput" min='2000-13-13' max='2000-13-13' required></input>
         </div>
         <div>
             <label for="challengePrize">Prize you offer for best solution<span class="challengeExplanations"> (10 €/$ or more)</span></label>
-            <input type="number" name="prize" id="challengePrize" min="1" value="10" required></input>
+            <input type="number" name="prize" class="challengePrize" min="1" value="10" required></input>
             <select name="currency">
                 <option value="EUR">EUR</option>
                 <option value="USD">USD</option>

@@ -11,7 +11,7 @@ var testChallenges = [
         prize: 50,
         currency: "USD",
         date: '2018-01-22',
-        author: {username: "donsan", id: "5b0d6cdcb6d39e055e418882"},
+        author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true 
     },
     {
@@ -21,7 +21,7 @@ var testChallenges = [
         prize: 50,
         currency: "EUR",
         date: '2018-01-17',
-        author: {username: "donsan", id: "5b0d6cdcb6d39e055e418882"},
+        author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: false
     },
     {
@@ -31,7 +31,7 @@ var testChallenges = [
         prize: 50,
         currency: "EUR",
         date: '2018-01-27',
-        author: {username: "donsan", id: "5b0d6cdcb6d39e055e418882"},
+        author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true
     },
     {
@@ -41,7 +41,7 @@ var testChallenges = [
         prize: 50,
         currency: "USD",
         date: '2018-01-12',
-        author: {username: "donsan", id: "5b0d6cdcb6d39e055e418882"},
+        author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true
     },
     {
@@ -51,7 +51,7 @@ var testChallenges = [
         prize: 50,
         currency: "USD",
         date: '2018-01-15',
-        author: {username: "donsan", id: "5b0d6cdcb6d39e055e418882"},
+        author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true
     },
     {
@@ -61,7 +61,7 @@ var testChallenges = [
         prize: 50,
         currency: "EUR",
         date: '2018-01-23',
-        author: {username: "donsan", id: "5b0d6cdcb6d39e055e418882"},
+        author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true
     },  
 ];
