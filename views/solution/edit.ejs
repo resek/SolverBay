@@ -1,15 +1,26 @@
 <% include ../partials/header %>
 
-<div class="rowCSS">
-    <h3>Edit your solution for challenge: "<%=foundChallenge.title%>"</h3>
-    <form action="/challenges/<%= foundChallenge._id %>/solutions/<%= foundSolution._id %>?_method=PUT" method="POST">
-        <label for="solutionTitle">Title</label>
-        <input type="text" name="solutionTitle" id="solutionTitle" value="<%= foundSolution.solutionTitle %>">
-        
-        <label for="solutionText">Your solution</label>
-        <textarea name="solutionText" id="solutionText" rows="15"><%= foundSolution.solutionText %></textarea>
-        <input type="submit" class="btn btnFull">
-    </form>
-</div>
+<div class="rowCSS newChallenge">
+        <div>
+            <h3>Edit solution: "<%=foundChallenge.title%>"</h3>
+        </div>    
+    
+        <form action="/challenges/<%= foundChallenge._id %>/solutions/<%= foundSolution._id %>?_method=PUT" method="POST">
+            <div>
+                <label for="challengeTitle">Title</label>
+                <input type="text" name="solutionTitle" class="challengeTitle" maxlength="62" required value="<%= foundSolution.solutionTitle %>">
+            </div>
+    
+            <div>
+                <label for="challengeDescription">Your solution</label>
+                <textarea name="solutionText" class="challengeDescription" rows="12" maxlength="1200" required><%= foundSolution.solutionText %></textarea>
+            </div>
+            
+            <div>
+                <input type="submit" class="btn btnFull" value="Post">
+            </div>          
+              
+        </form>
+    </div>
 
 <% include ../partials/footer %>

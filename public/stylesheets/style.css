@@ -630,7 +630,7 @@ footer .col-sm-6 {
 }
 
 /* ------------------------------- */
-/* VIEWS > CHALLENGES > NEW.EJS / EDIT.EJS */
+/* VIEWS > CHALLENGES / SOLUTIONS > NEW.EJS / EDIT.EJS */
 /* ------------------------------- */
 
 .newChallenge {
@@ -674,6 +674,10 @@ footer .col-sm-6 {
 .newChallenge input[type=number],
 .newChallenge select {
     margin-bottom: 10px;
+}
+
+.newChallenge h3 {
+    text-align: center;
 }
 
 .newChallenge img {

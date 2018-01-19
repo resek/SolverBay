@@ -1,15 +1,25 @@
 <% include ../partials/header %>
 
-<div class="rowCSS">
-    <h3>Post a solution for challenge: "<%=foundChallenge.title%>"</h3>
+<div class="rowCSS newChallenge">
+    <div>
+        <h3>Solution for: "<%=foundChallenge.title%>"</h3>
+    </div>    
 
     <form action="/challenges/<%= foundChallenge._id %>/solutions" method="POST">
-        <label for="solutionTitle">Title</label>
-        <input type="text" name="solutionTitle" id="solutionTitle">
+        <div>
+            <label for="challengeTitle">Title</label>
+            <input type="text" name="solutionTitle" class="challengeTitle" maxlength="62" required>
+        </div>
+
+        <div>
+            <label for="challengeDescription">Your solution</label>
+            <textarea name="solutionText" class="challengeDescription" rows="12" maxlength="1200" required></textarea>
+        </div>
         
-        <label for="solutionText">Your solution</label>
-        <textarea name="solutionText" id="solutionText" rows="15"></textarea>
-        <input type="submit" class="btn btnFull" value="Post">
+        <div>
+            <input type="submit" class="btn btnFull" value="Post">
+        </div>      
+        
     </form>
 </div>
 

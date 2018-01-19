@@ -54,7 +54,7 @@
                 <div>
                     <p><%= solution.solutionTitle %></p> 
                     <p><%= solution.solutionText %></p>
-                    <p class="author">posted by <%= solution.author.username %></p>
+                    <p class="author">solution by <%= solution.author.username %></p>
                 </div>
                 <div>
                     <% if(currentUser && solution.author.id.equals(currentUser.id)) { %>
