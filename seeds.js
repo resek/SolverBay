@@ -10,7 +10,7 @@ var testChallenges = [
         field: "thermal engineering",
         prize: 100,
         currency: "USD",
-        date: '2018-01-22',
+        date: '2018-02-10',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true 
     },
@@ -20,7 +20,7 @@ var testChallenges = [
         field: "thermal engineering",
         prize: 100,
         currency: "EUR",
-        date: '2018-01-17',
+        date: '2018-02-01',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e100"},
         isPaid: false
     },
@@ -30,7 +30,7 @@ var testChallenges = [
         field: "thermal engineering",
         prize: 100,
         currency: "EUR",
-        date: '2018-01-27',
+        date: '2018-02-02',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true
     },
@@ -40,7 +40,7 @@ var testChallenges = [
         field: "thermal engineering",
         prize: 100,
         currency: "USD",
-        date: '2018-01-12',
+        date: '2018-02-14',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true
     },
@@ -50,7 +50,7 @@ var testChallenges = [
         field: "thermal engineering",
         prize: 100,
         currency: "USD",
-        date: '2018-01-15',
+        date: '2018-02-08',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true
     },
@@ -60,7 +60,7 @@ var testChallenges = [
         field: "thermal engineering",
         prize: 100,
         currency: "EUR",
-        date: '2018-01-23',
+        date: '2018-02-16',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true
     },  
@@ -81,13 +81,13 @@ function seedDB() {
     //         console.log("tokens removed");
     //     }
     // });
-    // Challenge.remove({}, function(err) {
-    //     if(err) {
-    //         console.log(err);
-    //     } else {
-    //         console.log("Challenges removed");
-    //     }
-    // });        
+    Challenge.remove({}, function(err) {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log("Challenges removed");
+        }
+    });        
            
     testChallenges.forEach(function(testChallenge) {
         Challenge.create(testChallenge, function(err, newChallenge) {
