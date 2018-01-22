@@ -753,31 +753,26 @@ footer .col-sm-6 {
 .paymentBox {
     border-radius: 7px;
     border: 2px solid #3498db;
-    padding: 10px 10px;
+    padding: 20px 10px;
     margin-top: 70px;
     width: 600px;
     margin: 70 auto 20 auto;
     text-align: center;
 }
 
-.paymentBox h3, p {
-    margin-top: 15px;
-}
-
 .paymentBox h3 {
-    margin-bottom: 40px;
+    margin: 10px 0 40px 0;
 }
 
 .paymentBox img {
     display: block;
-    margin: 15px auto; 
+    margin: 15px auto 0 auto; 
 }
 
 .PayPalExplanation {
     width: 600px;
     margin: 0 auto 40px auto;
 }
-
 
 /* ------------------------------- */
 /*    VIEWS > LOGIN / REGISTER */
