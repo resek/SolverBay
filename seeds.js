@@ -30,7 +30,7 @@ var testChallenges = [
         field: "thermal engineering",
         prize: 100,
         currency: "EUR",
-        date: '2018-02-02',
+        date: '2018-02-22',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         isPaid: true
     },
