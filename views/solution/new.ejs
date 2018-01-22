@@ -3,17 +3,37 @@
 <div class="rowCSS newChallenge">
     <div>
         <h3>Solution for: "<%=foundChallenge.title%>"</h3>
-    </div>    
+    </div>
+    
+    <div class="uploadDiv">
+        <label>Upload files if needed<span class="challengeExplanations"> (<b>max:</b> 2MB/file &amp; 3 files; <b>types:</b> txt, pdf, png, jpg, jpeg)</span></label>
+        <div class="uploadBox">            
+            <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadForm">       
+                <input type="submit" value="Upload"><span class="uploadInfo"></span>
+                <input name="uploadedFile" type="file" id="fileUploadInput">
+            </form>
+            <ul class="filesList"></ul> 
+        </div>        
+    </div>
 
     <form action="/challenges/<%= foundChallenge._id %>/solutions" method="POST">
-        <div>
-            <label for="challengeTitle">Title</label>
-            <input type="text" name="solutionTitle" class="challengeTitle" maxlength="62" required>
+
+        <div id="hiddenInputsDiv">
         </div>
 
         <div>
-            <label for="challengeDescription">Your solution</label>
-            <textarea name="solutionText" class="challengeDescription" rows="12" maxlength="1200" required></textarea>
+            <label for="challengeTitle">Title</label>
+            <input type="text" name="solutionTitle" class="challengeTitle" placeholder="Type solution title..." maxlength="62" required>
+        </div>
+
+        <div>
+            <label for="challengeDescription">Your solution<span class="challengeExplanations"> (max 1200 characters)</span></label>
+            <textarea name="solutionText" class="challengeDescription" rows="12" maxlength="1200" placeholder="Your solution text..." required></textarea>
+        </div>
+
+        <div>
+            <input name="cooperationCheck" type="checkbox" class="cooperationCheck">
+            <p class="cooperationCheck">Show my email to challenge owner for possible further cooperation</p>
         </div>
         
         <div>

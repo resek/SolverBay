@@ -20,7 +20,18 @@
         <span class="sec"></span>s
     </div>
 
-    <p class="author">challenged by <%= foundChallenge.author.username %></p> 
+    <div>
+        <p class="author showAuthorField">challenged by <b><%= foundChallenge.author.username %></b></p>
+        <p class="field showAuthorField">in field: <b><%= foundChallenge.field %></b></p>
+    </div>
+    
+    
+    <% if(currentUser && foundChallenge.author.id.equals(currentUser._id)) { %>
+        <a class="btn btnFull" id="showChallengeEdit" href="/challenges/<%=foundChallenge._id%>/edit">Edit</a>
+        <!-- <form method="POST" action="/challenges/<%= foundChallenge._id %>?_method=DELETE">
+            <input type="submit" class="btn btnFull" value="Delete">
+        </form> -->
+    <% } %>
 
     <div class="descriptionBox">
         <p><%- foundChallenge.description.replace(/(?:\r\n|\r|\n)/g, '<br />') %></p>
@@ -34,13 +45,6 @@
             <% }); %>
         </ul>
     <% } %>    
-    
-    <% if(currentUser && foundChallenge.author.id.equals(currentUser._id)) { %>
-        <a class="btn btnFull" id="showChallengeEdit" href="/challenges/<%=foundChallenge._id%>/edit">Edit</a>
-        <!-- <form method="POST" action="/challenges/<%= foundChallenge._id %>?_method=DELETE">
-            <input type="submit" class="btn btnFull" value="Delete">
-        </form> -->
-    <% } %>
 
     <div>
         <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/new">Post a solution</a>
@@ -48,14 +52,21 @@
 </div>
 
 <div class="showSolutions">
-    <div class="rowCSS">      
+    
+    <div class="rowCSS">        
+        
         <% foundChallenge.solutions.forEach(function(solution) { %>
+            
             <div class="solutionBox">
+                
                 <div>
                     <p><%= solution.solutionTitle %></p> 
-                    <p><%= solution.solutionText %></p>
+                    <p><%- solution.solutionText.replace(/(?:\r\n|\r|\n)/g, '<br />') %></p>
                     <p class="author">solution by <%= solution.author.username %></p>
                 </div>
+
+                
+
                 <div>
                     <% if(currentUser && solution.author.id.equals(currentUser.id)) { %>
                         <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/<%= solution._id%>/edit">Edit</a>
@@ -63,7 +74,21 @@
                             <input type="submit" class="btn btnFull" value="Delete">
                         </form>
                     <% } %>
-                </div>       
+
+                    <% if(currentUser && foundChallenge.author.id.equals(currentUser._id) && solution.cooperationCheck) { %>
+                        <p><%= solution.author.email %></p>
+                    <% } %>
+    
+                    <% if (solution.files.length > 0) { %>
+                        <ul>
+                            <b>Files to download:</b> 
+                            <% solution.files.forEach(function(file) { %>
+                                <li><a href="/download/<%= file %>"><%= file.substring(14, 50) %></a></li>
+                            <% }); %>
+                        </ul>
+                    <% } %>
+                </div>              
+
             </div>
         <% }); %>
     </div>         

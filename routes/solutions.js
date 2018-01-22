@@ -33,6 +33,7 @@ router.post ("/challenges/:id/solutions", function (req, res) {
                     console.log(err);
                 } else {
                     newSolution.author.username = req.user.username;
+                    newSolution.author.email = req.user.email;
                     newSolution.author.id = req.user._id;
                     newSolution.save(); 
                     foundChallenge.solutions.push(newSolution);
