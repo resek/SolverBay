@@ -39,13 +39,13 @@ middlewareObj.checkSolutionOwnership = function (req, res, next) {
                 if (foundSolution.author.id.equals(req.user._id)) {
                     next();
                 } else {
-                    req.flash ("error", "You are not authorized to do that!")
+                    req.flash ("error", "you are not authorized to do that!")
                     res.redirect ("/challenges/" + req.params.id);
                 }
             }
         });
    } else {
-        req.flash ("error", "You have to be logged in to do that!");
+        req.flash ("error", "you have to be logged in to do that!");
         res.redirect ("/login");
    }
 };

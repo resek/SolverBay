@@ -28,8 +28,8 @@ router.post("/pay", function(req, res) {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "https://solverbay.herokuapp.com/success",
-            "cancel_url": "https://solverbay.herokuapp.com"
+            "return_url": process.env.PAYPAL_RETURN_URL,
+            "cancel_url": process.env.PAYPAL_CANCEL_URL
         },
         "transactions": [{
             "item_list": {

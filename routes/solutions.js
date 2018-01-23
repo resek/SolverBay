@@ -3,6 +3,7 @@ var router = express.Router();
 var Challenge = require ("../models/challenge");
 var Solution = require ("../models/solution");
 var middleware = require ("../middleware");
+var sanitizeHtml = require('sanitize-html');
 
 //solutions - new
 router.get ("/challenges/:id/solutions/new", middleware.isLoggedIn, function (req, res) {
@@ -28,7 +29,17 @@ router.post ("/challenges/:id/solutions", function (req, res) {
         if(err) {
             console.log(err);
         } else {
-            Solution.create (req.body, function(err, newSolution) {
+
+            var cleanSolutionText = sanitizeHtml(req.body.solutionText);
+            
+            var updatedData = { 
+                    solutionTitle: req.body.solutionTitle,
+                    solutionText: cleanSolutionText, 
+                    files: req.body.files,
+                    cooperationCheck: req.body.cooperationCheck 
+                };
+            
+            Solution.create (updatedData, function(err, newSolution) {
                 if(err) {
                     console.log(err);
                 } else {
@@ -71,7 +82,15 @@ router.get ("/challenges/:id/solutions/:solutionId/edit", middleware.checkSoluti
 
 //solutions - update
 router.put ("/challenges/:id/solutions/:solutionId", middleware.checkSolutionOwnership, function (req, res) {
-    Solution.findByIdAndUpdate (req.params.solutionId, req.body, function (err) {
+
+    var cleanSolutionText = sanitizeHtml(req.body.solutionText);
+            
+    var updatedData = { 
+            solutionTitle: req.body.solutionTitle,
+            solutionText: cleanSolutionText,  
+    };
+
+    Solution.findByIdAndUpdate (req.params.solutionId, updatedData, function (err) {
         if(err) {
             console.log(err); 
         } else {
@@ -82,7 +101,7 @@ router.put ("/challenges/:id/solutions/:solutionId", middleware.checkSolutionOwn
 });
 
 //solutions - delete
-router.delete ("/challenges/:id/solutions/:solutionId", middleware.checkSolutionOwnership, function(req, res) {
+router.delete ("/challenges/:id/solutions/:solutionId", middleware.checkSolutionOwnership, function(req, res) { 
     Solution.findByIdAndRemove (req.params.solutionId, function (err) {
         if(err) {
             console.log(err);
