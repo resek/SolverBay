@@ -151,7 +151,7 @@ label {
 
 .btn:hover, .btn:active, input[type=submit]:hover, input[type=submit]:active { 
     background-color: #196090;
-    border: 1px solid #196090;
+    border: 2px solid #196090;
     color: #fff;
 }
 
@@ -594,41 +594,71 @@ footer .col-sm-6 {
     -webkit-box-shadow: 0 2px 2px #aeaeaf;
             box-shadow: 0 2px 2px #aeaeaf;
     padding: 25px;
-    position: relative;
+    overflow: auto; 
 }
 
 .solutionBox div {
     display: inline-block;
+    line-height: 135%;
 }
 
 .solutionBox div:first-child {
-    width: 70%;
+    width: 65%;
+    font-size: 90%;
 }
 
 .solutionBox div:last-child {
-    position: absolute;
     font-size: 80%;
-    top: 25px;
-    right: 5px;
+    width: 35%;
+    float: right;
+    padding-left: 80px;
 }
 
 .solutionBox div:last-child form, a {
     display: inline-block;
+    font-size: 90%;
 }
 
-.solutionBox p:first-child  {
+.solutionBoxTitle  {
     font-weight: 700;
     margin-bottom: 10px;
 }
 
 .solutionBox input[type=submit] {
     background: #aa1212;
-    border: 2px solid #aa1212;
+    border: 4px solid #aa1212;
 }
 
 .solutionBox input[type=submit]:hover, .solutionBox input[type=submit]:active {
     background: #7f0707;
-    border: 2px solid #7f0707;
+    border: 4px solid #7f0707;
+}
+
+.solutionBox ul {
+    margin-bottom: 25px;
+}
+
+.solutionBox li {
+    display: block;
+}
+
+.solutionBox li a:link,
+.solutionBox li a:visited {
+    color: #3498db;
+    transition: color 0.3s;
+}
+
+.solutionBox li a:hover,
+.solutionBox li a:active {
+    color: #196090;
+}
+
+.solutionAuthor {
+    margin-bottom: 25px;
+}
+
+.solutionEmail {
+    margin-bottom: 25px;
 }
 
 /* ------------------------------- */

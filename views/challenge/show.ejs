@@ -60,24 +60,17 @@
             <div class="solutionBox">
                 
                 <div>
-                    <p><%= solution.solutionTitle %></p> 
-                    <p><%- solution.solutionText.replace(/(?:\r\n|\r|\n)/g, '<br />') %></p>
-                    <p class="author">solution by <%= solution.author.username %></p>
-                </div>
-
-                
+                    <p class="solutionBoxTitle"><%= solution.solutionTitle %></p> 
+                    <p><%- solution.solutionText.replace(/(?:\r\n|\r|\n)/g, '<br />') %></p>                    
+                </div>                
 
                 <div>
-                    <% if(currentUser && solution.author.id.equals(currentUser.id)) { %>
-                        <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/<%= solution._id%>/edit">Edit</a>
-                        <form method="POST" action="/challenges/<%= foundChallenge._id %>/solutions/<%= solution._id %>?_method=DELETE">
-                            <input type="submit" class="btn btnFull" value="Delete">
-                        </form>
-                    <% } %>
-
+                    
+                    <p class="solutionAuthor">solution by <b><%= solution.author.username %></b></p>
                     <% if(currentUser && foundChallenge.author.id.equals(currentUser._id) && solution.cooperationCheck) { %>
-                        <p><%= solution.author.email %></p>
-                    <% } %>
+                        <p>&amp; is open to be contacted:</p>
+                        <p class="solutionEmail"><b><%= solution.author.email %></b></p>
+                    <% } %>                    
     
                     <% if (solution.files.length > 0) { %>
                         <ul>
@@ -86,7 +79,15 @@
                                 <li><a href="/download/<%= file %>"><%= file.substring(14, 50) %></a></li>
                             <% }); %>
                         </ul>
+                    <% } %>     
+                    
+                    <% if(currentUser && solution.author.id.equals(currentUser.id)) { %>                    
+                        <a class="btn btnFull" href="/challenges/<%=foundChallenge._id%>/solutions/<%= solution._id%>/edit">Edit</a>
+                        <form method="POST" action="/challenges/<%= foundChallenge._id %>/solutions/<%= solution._id %>?_method=DELETE">
+                            <input type="submit" class="btn btnFull" value="Delete">
+                        </form>                        
                     <% } %>
+                    
                 </div>              
 
             </div>
