@@ -21,6 +21,7 @@ router.post("/pay", function(req, res) {
     var prize = req.body.prize;
     var id = req.body.id;
     var currency = req.body.currency;
+    var finalPrize = prize * 1.1;
 
     var create_payment_json = {
         "intent": "sale",
@@ -34,18 +35,18 @@ router.post("/pay", function(req, res) {
         "transactions": [{
             "item_list": {
                 "items": [{
-                    "name": "Challenge prize fee",
+                    "name": "Challenge prize",
                     "sku": "001",
-                    "price": prize + ".00",
+                    "price": finalPrize + ".00",
                     "currency": currency,
                     "quantity": 1
                 }]
             },
             "amount": {
                 "currency": currency,
-                "total": prize + ".00",
+                "total": finalPrize + ".00",
             },
-            "description": "Challenge prize fee must be paid in advance."
+            "description": "Challenge prize must be paid in advance."
         }]
     };
 
@@ -83,7 +84,7 @@ router.get("/success", function(req, res) {
         "transactions": [{
             "amount": {
                 "currency": currency,
-                "total": prize + ".00"
+                "total": finalPrize + ".00"
             }
         }]
     };

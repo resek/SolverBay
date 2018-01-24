@@ -733,6 +733,11 @@ footer .col-sm-6 {
     display: inline-block;
 }
 
+.platformFee {
+    display: inline-block;
+    font-size: 90%;
+}
+
 ::placeholder { 
     color: #8e8e8e;
  }
@@ -803,6 +808,10 @@ footer .col-sm-6 {
 .paymentBox img {
     display: block;
     margin: 15px auto 0 auto; 
+}
+
+.paymentBox span {
+    font-size: 70%;
 }
 
 .PayPalExplanation {
