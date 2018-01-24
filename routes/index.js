@@ -226,4 +226,9 @@ router.get ("/logout", function(req, res) {
     res.redirect ("/login");
 });
 
+//TERMS & CONDITIONS
+router.get ("/terms", function(req, res) {
+    res.render("terms");
+});
+
 module.exports = router;

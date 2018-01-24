@@ -55,12 +55,11 @@ h2 {
 }
 
 h1 {
-    margin-top: 0;
     letter-spacing: 1px;
     color: #fff;
     word-spacing: 6px;
     margin-bottom: 35px;
-    font-size: 270%;
+    font-size: 260%;
     font-weight: 300;
 }
 
@@ -186,6 +185,16 @@ label {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.headerText p {
+    color: white;
+    font-size: 140%;
+    display: block;
+    margin-bottom: 100px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-style: italic
 }
 
 .homeNavbar {
@@ -403,28 +412,12 @@ footer {
 
 .footer-nav {
     list-style: none;
-    float:left;    
-}
-
-.social-links {
-    list-style: none;
-    float: right;
-    font-size: 160%;
-}
-
-.footer-nav li, .social-links li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.footer-nav li:last-child,
-.social-links li:last-child {
-    margin-right: 0;
+    text-align: center;    
 }
 
 footer p {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 footer a:link,
@@ -436,33 +429,11 @@ footer a:visited {
     text-decoration: none;
 }
 
-footer .col-sm-6 {
-    margin-bottom: 10px;
-}
-
 .footer-nav li a:hover,
 .footer-nav li a:active {
     color: #fff;
 }
 
-.fa-facebook,
-.fa-twitter,
-.fa-instagram {
-    -webkit-transition: color 0.2s;
-    transition: color 0.2s;
-}
-
-.fa-facebook:hover {
-    color: #3b5998;
-}
-
-.fa-twitter:hover {
-    color: #55acee;
-}
-
-.fa-instagram:hover {
-    color: #125688;
-}
 
 /* ------------------------------- */
 /* VIEWS > CHALLENGES > INDEX.EJS */
@@ -661,9 +632,9 @@ footer .col-sm-6 {
     margin-bottom: 25px;
 }
 
-/* ------------------------------- */
-/* VIEWS > CHALLENGES / SOLUTIONS > NEW.EJS / EDIT.EJS */
-/* ------------------------------- */
+/* ----------------------------------------------- */
+/* VIEWS > CHALLENGES/SOLUTIONS > NEW.EJS/EDIT.EJS */
+/* ----------------------------------------------- */
 
 .newChallenge {
     margin-top: 50px;
@@ -864,4 +835,15 @@ footer .col-sm-6 {
 .loginRegisterForm a:hover,
 .loginRegisterForm a:active {
     color: #196090;     
+}
+
+/* ------------------------------- */
+/*    VIEWS > TERMS */
+/* ------------------------------- */
+
+.terms {
+    font-size: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    line-height: 135%;
 }
