@@ -19,7 +19,7 @@ var filesRoutes = require ("./routes/files");
 var paypalRoutes = require("./routes/paypal");
 var User = require('./models/user');
 
-seedDB();
+//seedDB();
 
 //app config
 app.use(methodOverride('_method'));

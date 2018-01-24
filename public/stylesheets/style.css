@@ -58,7 +58,7 @@ h1 {
     letter-spacing: 1px;
     color: #fff;
     word-spacing: 6px;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
     font-size: 260%;
     font-weight: 300;
 }
@@ -181,7 +181,7 @@ label {
     position: absolute;
     max-width: 1140px;
     width: 90%;
-    top: 50%; 
+    top: 55%; 
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
