@@ -67,7 +67,7 @@
                 <div>
                     
                     <p class="solutionAuthor">solution by <b><%= solution.author.username %></b></p>
-                    <% if(currentUser && foundChallenge.author.id.equals(currentUser._id) && solution.cooperationCheck) { %>
+                    <% if(solution.cooperationCheck) { %>
                         <p><%= solution.author.username %> wants to cooperate:</p>
                         <p class="solutionEmail"><b><%= solution.author.email %></b></p>
                     <% } %>                    
