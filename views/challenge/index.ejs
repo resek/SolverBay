@@ -27,8 +27,8 @@
                             <span class="sec"></span>s
                         </div>
                     </div>                
-                    <p class="indexDescription"><%= challenge.description.substring(0, 220) %>...</p>
-                    <p class="author">challenged by <%= challenge.author.username %></p>            
+                    <p class="indexDescription"><%- challenge.description.substring(0, 210) %>...</p>
+                    <p class="author">challenged by <b><%= challenge.author.username %></b></p>            
                     <a class="btn btnFull" href="/challenges/<%= challenge._id %>">Solve it</a>
                 </div>
             <% } %> 

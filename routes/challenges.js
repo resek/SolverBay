@@ -22,7 +22,7 @@ router.get("/challenges/new", middleware.isLoggedIn, function(req, res) {
   
 //create
 router.post("/challenges", middleware.isLoggedIn, function(req, res) {
-    
+
     var cleanDescription = sanitizeHtml(req.body.description);
     var updatedData = { title: req.body.title, 
                         field: req.body.field, 
