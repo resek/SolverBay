@@ -13,6 +13,7 @@ var testChallenges = [
         date: '2018-02-19',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         files: [ '1516872865434-examplePDFfile.pdf', '1516872874494-exampleTextFile.txt', '1516872882507-exampleImageFile.jpeg' ],
+        solutions : [ ObjectId("5a69b1d10547a50014bc9a7a"), ObjectId("5a69b1d10547a50014bc9a7a") ],
         isPaid: true 
     },
     {
@@ -24,6 +25,7 @@ var testChallenges = [
         date: '2018-02-07',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e100"},
         files: [ '1516872865434-examplePDFfile.pdf', '1516872874494-exampleTextFile.txt', '1516872882507-exampleImageFile.jpeg' ],
+        solutions : [ ObjectId("5a69b1d10547a50014bc9a7a"), ObjectId("5a69b1d10547a50014bc9a7a") ],
         isPaid: false
     },
     {
@@ -35,6 +37,7 @@ var testChallenges = [
         date: '2018-02-07',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         files: [ '1516872865434-examplePDFfile.pdf', '1516872874494-exampleTextFile.txt', '1516872882507-exampleImageFile.jpeg' ],
+        solutions : [ ObjectId("5a69b1d10547a50014bc9a7a"), ObjectId("5a69b1d10547a50014bc9a7a") ],
         isPaid: true
     },
     {
@@ -46,6 +49,7 @@ var testChallenges = [
         date: '2018-02-14',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         files: [ '1516872865434-examplePDFfile.pdf', '1516872874494-exampleTextFile.txt', '1516872882507-exampleImageFile.jpeg' ],
+        solutions : [ ObjectId("5a69b1d10547a50014bc9a7a"), ObjectId("5a69b1d10547a50014bc9a7a") ],
         isPaid: true
     },
     {
@@ -57,6 +61,7 @@ var testChallenges = [
         date: '2018-02-11',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         files: [ '1516872865434-examplePDFfile.pdf', '1516872874494-exampleTextFile.txt', '1516872882507-exampleImageFile.jpeg' ],
+        solutions : [ ObjectId("5a69b1d10547a50014bc9a7a"), ObjectId("5a69b1d10547a50014bc9a7a") ],
         isPaid: true
     },
     {
@@ -68,6 +73,7 @@ var testChallenges = [
         date: '2018-02-22',
         author: {username: "donsan", id: "5a4cb16f72f7b70235859e3c"},
         files: [ '1516872865434-examplePDFfile.pdf', '1516872874494-exampleTextFile.txt', '1516872882507-exampleImageFile.jpeg' ],
+        solutions : [ ObjectId("5a69b1d10547a50014bc9a7a"), ObjectId("5a69b1d10547a50014bc9a7a") ],
         isPaid: true,
     },  
 ];
