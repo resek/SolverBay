@@ -57,8 +57,8 @@ h2 {
 h1 {
     letter-spacing: 1px;
     color: #fff;
-    word-spacing: 6px;
-    margin-bottom: 30px;
+    word-spacing: 5px;
+    margin-bottom: 50px;
     font-size: 260%;
     font-weight: 300;
 }
@@ -189,11 +189,11 @@ label {
 
 .headerText p {
     color: white;
-    font-size: 140%;
+    font-size: 150%;
     display: block;
     margin-bottom: 100px;
     font-weight: 300;
-    letter-spacing: 1px;
+    letter-spacing: 1.7px;
     font-style: italic
 }
 
