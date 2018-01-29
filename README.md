@@ -1,4 +1,4 @@
 # SolverBay
-Developing crowdsourcing platform my business partner and I have founded
+As a final project after learnig to code and maybe startup idea
 
 http://www.solverbay.com
