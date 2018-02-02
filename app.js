@@ -1,4 +1,5 @@
 var express           = require('express');
+var helmet            = require('helmet')
 var methodOverride    = require('method-override');
 var passport          = require('passport');
 var dotenv            = require('dotenv').config()
@@ -23,6 +24,7 @@ var User = require('./models/user');
 //seedDB();
 
 //app config
+app.use(helmet());
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));

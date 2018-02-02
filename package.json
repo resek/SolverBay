@@ -29,6 +29,7 @@
     "express-session": "^1.15.6",
     "express-sslify": "^1.2.0",
     "express-validator": "^4.3.0",
+    "helmet": "^3.10.0",
     "method-override": "^2.3.10",
     "mime-types": "^2.1.17",
     "mongoose": "^4.12.4",

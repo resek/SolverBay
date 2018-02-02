@@ -531,6 +531,7 @@ footer a:visited {
 .showChallenge li a:link,
 .showChallenge li a:visited {
     color: #3498db;
+    -webkit-transition: color 0.3s;
     transition: color 0.3s;
 }
 
@@ -616,6 +617,7 @@ footer a:visited {
 .solutionBox li a:link,
 .solutionBox li a:visited {
     color: #3498db;
+    -webkit-transition: color 0.3s;
     transition: color 0.3s;
 }
 
@@ -708,6 +710,14 @@ footer a:visited {
     display: inline-block;
     font-size: 90%;
 }
+
+::-webkit-input-placeholder { 
+    color: #8e8e8e;
+ }
+
+:-ms-input-placeholder { 
+    color: #8e8e8e;
+ }
 
 ::placeholder { 
     color: #8e8e8e;
