@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
 var Challenge = require ("../models/challenge");
 var Token = require ("../models/token");
 var User = require ("../models/user");
+var Email = require ("../models/email");
 var passport = require ("passport");
 var nodemailer = require ("nodemailer");
 var crypto = require ("crypto-browserify");
@@ -224,6 +226,18 @@ router.get ("/logout", function(req, res) {
     req.flash("info", "you have been logged out")
     req.logout();
     res.redirect ("/login");
+});
+
+//NEWSLETTER
+var upload = multer();
+
+router.post("/newsletter", upload.single("email"), function(req, res, next) {
+    Email.create(req.body, function (err){
+        if (err) {
+            console.log(err);
+        }
+    });
+    res.json("Thank you!")
 });
 
 //TERMS & CONDITIONS

@@ -10,6 +10,8 @@ var uploadInfo = document.querySelector(".uploadInfo");
 var fileUploadInput = document.querySelector("#fileUploadInput");
 var filesList = document.querySelector(".filesList");
 var hiddenInputsDiv = document.querySelector("#hiddenInputsDiv");
+var newsletterForm = document.querySelector(".newsletterForm");
+var newsletterDiv = document.querySelector(".newsletterDiv");
 
 //COUNTDOWN TIMER
 var dateString;
@@ -183,4 +185,30 @@ function uploadFiles(e) {
         uploadInfo.textContent = "You can upload max 3 files";
         fileUploadInput.value = "";
     }  
+}
+
+//NEWSLETTER SIGNUP
+if (newsletterForm) {
+    newsletterForm.addEventListener("submit", newsletterJoin, false);
+}
+
+function newsletterJoin(e) {
+    e.preventDefault();
+
+    var data = new FormData(newsletterForm);
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "/newsletter", true);
+    xhr.send(data);
+
+    xhr.onload = function () {
+
+        responseObject = JSON.parse(xhr.response);
+
+        newsletterForm.style.display = "none";
+        
+        var newSpan = document.createElement("span");
+        newSpan.textContent = responseObject;
+        newsletterDiv.appendChild(newSpan)
+    }
 }
