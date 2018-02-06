@@ -56,11 +56,11 @@ router.post ("/register", function(req, res) {
                 
                 //set nodemailer
                 var transporter = nodemailer.createTransport({
-                    host: 'mail.sloveniafood.com',
+                    host: 'smtp.gmail.com',
                     port: 465,
                     secure: true, 
                     auth: {
-                        user: "hello@sloveniafood.com",
+                        user: "hello@solverbay.com",
                         pass: process.env.EMAIL_PASS
                         },
                     tls: { rejectUnauthorized: false }
@@ -68,7 +68,7 @@ router.post ("/register", function(req, res) {
 
                 // setup email data
                 var mailOptions = {
-                    from: '"SolverBay" <hello@sloveniafood.com>', // sender address
+                    from: '"SolverBay" <hello@solverbay.com>', // sender address
                     to: user.email, // list of receivers
                     subject: 'Account Verification Token',
                     text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token,
@@ -138,11 +138,11 @@ router.post ("/passwordemail", function(req, res) {
 
             //set nodemailer
             var transporter = nodemailer.createTransport({
-                host: 'mail.sloveniafood.com',
+                host: 'smtp.gmail.com',
                 port: 465,
                 secure: true, 
                 auth: {
-                    user: "hello@sloveniafood.com",
+                    user: "hello@solverbay.com",
                     pass: process.env.EMAIL_PASS
                     },
                 tls: { rejectUnauthorized: false }
@@ -150,7 +150,7 @@ router.post ("/passwordemail", function(req, res) {
 
             // setup email data
             var mailOptions = {
-                from: '"SolverBay" <hello@sloveniafood.com>', // sender address
+                from: '"SolverBay" <hello@solverbay.com>', // sender address
                 to: user.email, // list of receivers
                 subject: 'Reset your password',
                 text: 'Hello,\n\n' + 'Reset your password by clicking the link: \nhttp:\/\/' + req.headers.host + '\/reset\/' + token.token,
