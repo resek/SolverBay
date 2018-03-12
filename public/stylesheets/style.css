@@ -464,7 +464,8 @@ footer a:visited {
     text-decoration: none;
 }
 
-.footer-nav li:first-of-type {
+.footer-nav li:first-of-type,
+.footer-nav li:nth-child(2) {
     margin-right: 25px;
 }
 
@@ -895,4 +896,24 @@ footer a:visited {
     max-width: 600px;
     margin: 50px auto;
     line-height: 135%;
+}
+
+/* ------------------------------- */
+/*    VIEWS > ABOUT */
+/* ------------------------------- */
+
+.about {
+    font-size: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    line-height: 135%;
+}
+
+.aboutList {
+    list-style-type: disc;
+    margin: 20px 0 50px 0;
+}
+
+.about li {
+    display: list-item;
 }
