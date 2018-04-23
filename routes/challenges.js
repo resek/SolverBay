@@ -23,15 +23,16 @@ router.get("/challenges/new", middleware.isLoggedIn, function(req, res) {
 //create
 router.post("/challenges", middleware.isLoggedIn, function(req, res) {
     var cleanDescription = sanitizeHtml(req.body.description);
-    var updatedData = { title: req.body.title, 
-                        field: req.body.field, 
-                        description: cleanDescription, 
-                        date: req.body.date, 
-                        prize: req.body.prize,
-                        currency: req.body.currency,
-                        files: req.body.files };
-
-    Challenge.create(updatedData, function(err, newChallenge) {
+    var data = { 
+        title: req.body.title, 
+        field: req.body.field, 
+        description: cleanDescription, 
+        date: req.body.date, 
+        prize: req.body.prize,
+        currency: req.body.currency,
+        files: req.body.files };
+        
+    Challenge.create(data, function(err, newChallenge) {
         if(err) {
             console.log(err);
         } else {

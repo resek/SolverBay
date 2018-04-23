@@ -21,6 +21,9 @@ router.post("/pay", function(req, res) {
     var prize = req.body.prize;
     var id = req.body.id;
     var currency = req.body.currency;
+    var calPrize;
+
+    calPrize = (prize * 1.1).toString() + ".00";
 
     var create_payment_json = {
         "intent": "sale",
@@ -36,14 +39,14 @@ router.post("/pay", function(req, res) {
                 "items": [{
                     "name": "Challenge prize",
                     "sku": "001",
-                    "price": prize * 1.1 + ".00",
+                    "price": calPrize,
                     "currency": currency,
                     "quantity": 1
                 }]
             },
             "amount": {
                 "currency": currency,
-                "total": prize * 1.1 + ".00",
+                "total": calPrize,
             },
             "description": "Challenge prize must be paid in advance."
         }]
