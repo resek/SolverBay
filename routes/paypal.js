@@ -24,6 +24,8 @@ router.post("/pay", function(req, res) {
     var calPrize;
 
     calPrize = (prize * 1.1).toString() + ".00";
+    console.log(calPrize);
+    console.log(typeof calPrize);
 
     var create_payment_json = {
         "intent": "sale",

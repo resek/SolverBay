@@ -4,7 +4,7 @@
     <div class="paymentBox">
         <p><b>Payment for:</b> <%= foundChallenge.title %></p>
 
-        <h3><%= foundChallenge.prize %> <%= foundChallenge.currency %> + 10%<span class="challengeExplanations"> fee</span> = <%- foundChallenge.prize * 1.1 %> <%= foundChallenge.currency %></h3>
+        <h3><%= foundChallenge.prize %> <%= foundChallenge.currency %> + 10%<span class="challengeExplanations"> fee</h3>
     
         <form action="/pay" method="post">
             <input name="id" type="hidden" value="<%= foundChallenge.id %>">
