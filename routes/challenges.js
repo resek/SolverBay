@@ -22,7 +22,6 @@ router.get("/challenges/new", middleware.isLoggedIn, function(req, res) {
   
 //create
 router.post("/challenges", middleware.isLoggedIn, function(req, res) {
-
     var cleanDescription = sanitizeHtml(req.body.description);
     var updatedData = { title: req.body.title, 
                         field: req.body.field, 
@@ -39,8 +38,20 @@ router.post("/challenges", middleware.isLoggedIn, function(req, res) {
             newChallenge.author.username = req.user.username;
             newChallenge.author.id = req.user._id;
             newChallenge.save();
-            var challengeId = encodeURIComponent(newChallenge._id);
-            res.redirect('/pay?valid=' + challengeId);
+            if (req.body.coupon == 76892) {
+                newChallenge.isPaid = true;
+                newChallenge.save(function(err) {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        req.flash("info", "challenge posted successfully");
+                        res.redirect("/challenges");
+                    }
+                });
+            } else {
+                var challengeId = encodeURIComponent(newChallenge._id);
+                res.redirect('/pay?valid=' + challengeId);
+            }            
         }
     });
 });
