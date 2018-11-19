@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+mongoose.Promise = global.Promise;
+
 var solutionSchema = new mongoose.Schema({
     solutionTitle: String,
     solutionText: String,

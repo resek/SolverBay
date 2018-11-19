@@ -27,7 +27,6 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "express-sslify": "^1.2.0",
     "express-validator": "^4.3.0",
     "helmet": "^3.15.0",
     "method-override": "^2.3.10",

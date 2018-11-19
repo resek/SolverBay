@@ -6,7 +6,6 @@ var dotenv            = require('dotenv').config()
 var LocalStrategy     = require('passport-local').Strategy;
 var session           = require('express-session');
 var bodyParser        = require('body-parser');
-// var enforce           = require('express-sslify');
 var mongoose          = require('mongoose');
 var flash             = require('connect-flash');
 var expressValidator  = require('express-validator');
@@ -25,13 +24,16 @@ var User = require('./models/user');
 
 //app config
 app.use(helmet());
-// app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-mongoose.connect(process.env.MLAB_MONGODB);
+mongoose.connect(process.env.MLAB_MONGODB, {
+  keepAlive: true,
+  reconnectTries: Number.MAX_VALUE,
+  useMongoClient: true
+});
 app.use(flash());
 app.use(session({
   secret: process.env.SESSION_SECRET,

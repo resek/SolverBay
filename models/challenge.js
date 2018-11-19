@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 
+mongoose.Promise = global.Promise;
+
 var challengeSchema = new mongoose.Schema({
     title: String,
     field: String,

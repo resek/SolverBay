@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 
+mongoose.Promise = global.Promise;
+
 var UserSchema = new mongoose.Schema({
     username: { type: String, unique: true },
     password: String,
